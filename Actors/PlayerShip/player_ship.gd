@@ -22,8 +22,10 @@ func move() -> void:
 
 
 func animate() -> void:
-	if velocity.x != 0:
+	var movement_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if movement_vector.x != 0:
 		$Sprite2D.frame = 1
 	else:
 		$Sprite2D.frame = 0
-	$Sprite2D.flip_h = velocity.x < 0
+	print(movement_vector)
+	$Sprite2D.flip_h = movement_vector.x < 0
