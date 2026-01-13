@@ -3,6 +3,9 @@ class_name PlayerShip extends CharacterBody2D
 
 const SPEED = 150
 
+func _ready() -> void:
+	Global.player = self
+
 
 func _physics_process(_delta: float) -> void:
 	move()
@@ -18,7 +21,6 @@ func move() -> void:
 	).normalized()
 	velocity = snapped_vector * SPEED
 	move_and_slide()
-	# Global.PLAYER_LOCATION = global_position
 
 
 func animate() -> void:
@@ -27,5 +29,4 @@ func animate() -> void:
 		$Sprite2D.frame = 1
 	else:
 		$Sprite2D.frame = 0
-	print(movement_vector)
 	$Sprite2D.flip_h = movement_vector.x < 0

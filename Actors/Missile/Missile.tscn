@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba7vffmd7s3jo"]
+
+[ext_resource type="Script" uid="uid://bcouoaoxpjd2c" path="res://Actors/Missile/missile.gd" id="1_40kgx"]
+[ext_resource type="Texture2D" uid="uid://cwlrncfft6kag" path="res://Actors/Missile/_art/missile.png" id="1_f72ud"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40kgx"]
+atlas = ExtResource("1_f72ud")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukxhg"]
+atlas = ExtResource("1_f72ud")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7frp"]
+atlas = ExtResource("1_f72ud")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsf76"]
+atlas = ExtResource("1_f72ud")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rukfl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40kgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukxhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7frp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsf76")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f72ud"]
+radius = 2.0
+height = 8.0
+
+[node name="Missile" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_40kgx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rukfl")
+frame_progress = 0.26358187
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_f72ud")
