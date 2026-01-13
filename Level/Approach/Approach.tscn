@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://gcg5xd5mxmjp"]
+
+[ext_resource type="Script" uid="uid://j4evjkokfrm1" path="res://Level/Approach/approach.gd" id="1_q6o5w"]
+
+[node name="Approach" type="Node2D"]
+script = ExtResource("1_q6o5w")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true

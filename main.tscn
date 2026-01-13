@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cevmhwburofnj"]
+[gd_scene load_steps=5 format=3 uid="uid://cevmhwburofnj"]
 
 [ext_resource type="PackedScene" uid="uid://c0khkk0nmdh1n" path="res://Backgrounds/ScrollingSpace/ScrollingSpace.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drthg1m8xc5eh" path="res://Actors/PlayerShip/PlayerShip.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://deb5stmt5ecmn" path="res://Level/player_boundaries.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://deb5stmt5ecmn" path="res://Level/PlayerBoundaries.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://gcg5xd5mxmjp" path="res://Level/Approach/Approach.tscn" id="4_1bvp3"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,3 +13,6 @@
 position = Vector2(81, 110)
 
 [node name="PlayerBoundaries" parent="." instance=ExtResource("3_h2yge")]
+
+[node name="Approach" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(1, 0)
