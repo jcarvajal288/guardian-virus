@@ -1,20 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cevmhwburofnj"]
+[gd_scene load_steps=4 format=3 uid="uid://cevmhwburofnj"]
 
 [ext_resource type="PackedScene" uid="uid://c0khkk0nmdh1n" path="res://Backgrounds/ScrollingSpace/ScrollingSpace.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drthg1m8xc5eh" path="res://Actors/PlayerShip/PlayerShip.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://ba7vffmd7s3jo" path="res://Actors/Missile/Missile.tscn" id="3_h2yge"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(178, 10)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(10, 166)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(9, 160)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
-size = Vector2(180, 6)
+[ext_resource type="PackedScene" uid="uid://deb5stmt5ecmn" path="res://Level/player_boundaries.tscn" id="3_h2yge"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,35 +11,4 @@ size = Vector2(180, 6)
 [node name="PlayerShip" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(81, 110)
 
-[node name="PlayerBoundaries" type="Node2D" parent="."]
-
-[node name="BoundaryNorth" type="StaticBody2D" parent="PlayerBoundaries"]
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBoundaries/BoundaryNorth"]
-position = Vector2(81.5, -5)
-shape = SubResource("RectangleShape2D_0xm2m")
-
-[node name="BoundaryWest" type="StaticBody2D" parent="PlayerBoundaries"]
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBoundaries/BoundaryWest"]
-position = Vector2(-5, 70)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="BoundaryEast" type="StaticBody2D" parent="PlayerBoundaries"]
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBoundaries/BoundaryEast"]
-position = Vector2(164.5, 71)
-shape = SubResource("RectangleShape2D_1bvp3")
-
-[node name="Boundary South" type="StaticBody2D" parent="PlayerBoundaries"]
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBoundaries/Boundary South"]
-position = Vector2(78, 147)
-shape = SubResource("RectangleShape2D_lquwl")
-
-[node name="Missile" parent="PlayerBoundaries" instance=ExtResource("3_h2yge")]
-position = Vector2(25, -28)
+[node name="PlayerBoundaries" parent="." instance=ExtResource("3_h2yge")]

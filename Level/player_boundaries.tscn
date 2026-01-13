@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://deb5stmt5ecmn"]
+
+[ext_resource type="PackedScene" uid="uid://ba7vffmd7s3jo" path="res://Actors/Missile/Missile.tscn" id="1_tij8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(178, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(10, 166)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(9, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(180, 6)
+
+[node name="PlayerBoundaries" type="Node2D"]
+
+[node name="BoundaryNorth" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryNorth"]
+position = Vector2(81.5, -5)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="BoundaryWest" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryWest"]
+position = Vector2(-5, 70)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="BoundaryEast" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryEast"]
+position = Vector2(164.5, 71)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Boundary South" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary South"]
+position = Vector2(78, 147)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Missile" parent="." instance=ExtResource("1_tij8b")]
+position = Vector2(25, -28)
