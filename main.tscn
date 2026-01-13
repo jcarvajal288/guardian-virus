@@ -54,4 +54,4 @@ position = Vector2(78, 147)
 shape = SubResource("RectangleShape2D_lquwl")
 
 [node name="Missile" parent="PlayerBoundaries" instance=ExtResource("3_h2yge")]
-position = Vector2(36, 13)
+position = Vector2(25, -28)
