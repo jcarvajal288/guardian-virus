@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0khkk0nmdh1n"]
+
+[ext_resource type="Script" uid="uid://v4euy047fniw" path="res://Backgrounds/ScrollingSpace/scrolling_space.gd" id="1_55dy2"]
+[ext_resource type="Texture2D" uid="uid://bnyo7fykpcyh6" path="res://Backgrounds/ScrollingSpace/_art/stars.png" id="2_1wina"]
+
+[node name="ScrollingSpace" type="ParallaxBackground"]
+script = ExtResource("1_55dy2")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(256, 256)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("2_1wina")
+centered = false
