@@ -1,15 +1,25 @@
 class_name PlayerShip extends CharacterBody2D
 
+const SHOT_1 = preload("res://Actors/PlayerShip/Shot1/Shot1.tscn")
 
 const SPEED = 150
 
+var can_shoot = true
+
+
 func _ready() -> void:
 	Global.player = self
+	z_index = Global.RenderOrder.PLAYER
+	$ShotTimer.timeout.connect(expire_shot_cooldown)
+
+
+func expire_shot_cooldown() -> void:
+	can_shoot = true
 
 
 func _physics_process(_delta: float) -> void:
 	move()
-	# shoot()
+	shoot()
 	animate()
 
 
@@ -21,6 +31,15 @@ func move() -> void:
 	).normalized()
 	velocity = snapped_vector * SPEED
 	move_and_slide()
+
+
+func shoot() -> void:
+	if can_shoot and Input.is_action_pressed("shoot"):
+		var shot = SHOT_1.instantiate()
+		shot.global_position = global_position
+		shot.global_position.y -= 8.0
+		get_tree().root.add_child(shot)
+		can_shoot = false
 
 
 func animate() -> void:
