@@ -1,4 +1,5 @@
-class_name Missile extends CharacterBody2D
+extends CharacterBody2D
+
 
 func _ready() -> void:
 	$Hurtbox.on_hit.connect(_on_hit)
