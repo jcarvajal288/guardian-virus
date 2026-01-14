@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://ba7vffmd7s3jo"]
 
-[ext_resource type="Script" uid="uid://bcouoaoxpjd2c" path="res://Actors/Missile/missile.gd" id="1_40kgx"]
 [ext_resource type="Texture2D" uid="uid://cwlrncfft6kag" path="res://Actors/Missile/_art/missile.png" id="1_f72ud"]
+[ext_resource type="Script" uid="uid://bcppyafsvb5yw" path="res://Actors/enemy.gd" id="1_j7frp"]
 [ext_resource type="PackedScene" uid="uid://csdc4kco3ncf5" path="res://Actors/Components/Hurtbox/Hurtbox.tscn" id="3_ukxhg"]
 [ext_resource type="PackedScene" uid="uid://fath7ckl4o02" path="res://Actors/Components/MovementPatterns/DownwardsTowardsPlayer/DownwardTowardsPlayer.tscn" id="4_j7frp"]
 
@@ -52,7 +52,7 @@ height = 10.0
 [node name="Missile" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_40kgx")
+script = ExtResource("1_j7frp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rukfl")

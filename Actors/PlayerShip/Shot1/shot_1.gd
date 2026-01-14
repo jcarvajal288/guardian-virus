@@ -1,6 +1,7 @@
 extends Area2D
 
 const SPEED = 300.0
+const DAMAGE = 1
 
 
 func _ready() -> void:
@@ -13,5 +14,7 @@ func _physics_process(delta: float) -> void:
 	global_position += displacement
 
 
-func _on_hit(_body: Node2D) -> void:
+func _on_hit(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		body.do_damage(1)
 	queue_free()
