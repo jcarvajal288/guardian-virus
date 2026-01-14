@@ -1,9 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs38ah8swkwmh"]
+[gd_scene load_steps=9 format=3 uid="uid://cs38ah8swkwmh"]
 
 [ext_resource type="Texture2D" uid="uid://cp8pyhpqxvfv" path="res://Actors/Spider/_art/spider.png" id="1_cue1s"]
 [ext_resource type="Script" uid="uid://bcppyafsvb5yw" path="res://Actors/enemy.gd" id="1_eyx8a"]
-[ext_resource type="PackedScene" uid="uid://csdc4kco3ncf5" path="res://Actors/Components/Hurtbox/Hurtbox.tscn" id="2_eyx8a"]
-[ext_resource type="PackedScene" uid="uid://cp55sguhjukgu" path="res://Actors/Components/MovementPatterns/StraightAtPlayer/StraightAtPlayer.tscn" id="4_tyr8e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tyr8e"]
 atlas = ExtResource("1_cue1s")
@@ -44,9 +42,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_lsb0o"]
 radius = 4.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dbebq"]
-radius = 4.0
-
 [node name="Spider" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
@@ -60,16 +55,3 @@ frame_progress = 0.95860916
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lsb0o")
-
-[node name="Hurtbox" parent="." instance=ExtResource("2_eyx8a")]
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
-shape = SubResource("CircleShape2D_dbebq")
-
-[node name="StraightAtPlayer" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("4_tyr8e")]
-subject = NodePath("..")
-speed = 50.0
-
-[editable path="Hurtbox"]

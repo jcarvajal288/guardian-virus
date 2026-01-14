@@ -18,7 +18,14 @@ func spawn_missile() -> void:
 	var spawns = [SPAWN_TOP_HALF_LEFT, SPAWN_TOP_MIDDLE, SPAWN_TOP_HALF_RIGHT]
 	var spawn = Global.rng.randi_range(0, spawns.size() - 1)
 	var missile = MISSILE.instantiate()
+
+	var move_pattern = MovementPatterns.DOWNWARDS_TOWARDS_PLAYER.instantiate()
+	move_pattern.subject = missile
+	move_pattern.speed = 100.0
+	move_pattern.horizontal_accel = 20.0
+
 	missile.global_position = spawns[spawn]
+	missile.add_child(move_pattern)
 	get_parent().add_child.call_deferred(missile)
 
 
@@ -26,5 +33,11 @@ func spawn_spider() -> void:
 	var spawns = [SPAWN_TOP_LEFT, SPAWN_TOP_RIGHT]
 	var spawn = Global.rng.randi_range(0, spawns.size() - 1)
 	var spider = SPIDER.instantiate()
+
+	var move_pattern = MovementPatterns.STRAIGHT_AT_PLAYER.instantiate()
+	move_pattern.subject = spider
+	move_pattern.speed = 50.0
+
 	spider.global_position = spawns[spawn]
+	spider.add_child(move_pattern)
 	get_parent().add_child.call_deferred(spider)
