@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://global.gd"
 MovementPatterns="*res://Actors/Components/MovementPatterns/movement_patterns.gd"
+BulletPatterns="*res://Bullets/BulletPatterns/bullet_patterns.gd"
 
 [display]
 

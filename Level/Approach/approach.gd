@@ -38,6 +38,14 @@ func spawn_spider() -> void:
 	move_pattern.subject = spider
 	move_pattern.speed = 50.0
 
+	var bullet_pattern = BulletPatterns.SINGLE_SHOT.instantiate()
+	bullet_pattern.bullet_type = BulletPatterns.BALL_BULLET
+	bullet_pattern.speed = 75.0
+	bullet_pattern.direction = Global.TOWARDS_PLAYER
+	bullet_pattern.startup_time = 0.5
+	bullet_pattern.repeat_time = 1.0
+
 	spider.global_position = spawns[spawn]
 	spider.add_child(move_pattern)
+	spider.add_child(bullet_pattern)
 	get_parent().add_child.call_deferred(spider)
