@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0bbsooype7w1"]
+[gd_scene load_steps=6 format=3 uid="uid://d0bbsooype7w1"]
 
 [ext_resource type="Script" uid="uid://dn6da666j5bny" path="res://Actors/PlayerShip/Shot1/shot_1.gd" id="1_nojch"]
 [ext_resource type="Texture2D" uid="uid://dilni1tfhbly" path="res://Actors/PlayerShip/_art/shot1.png" id="2_34nhx"]
+[ext_resource type="PackedScene" uid="uid://bn3mvtsoa3g3n" path="res://Actors/Components/Hitbox/Hitbox.tscn" id="3_34nhx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6wyt"]
 size = Vector2(4, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34nhx"]
+radius = 2.0
 
 [node name="Shot1" type="Area2D"]
 script = ExtResource("1_nojch")
@@ -14,3 +18,11 @@ texture = ExtResource("2_34nhx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i6wyt")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_34nhx")]
+target = 2
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_34nhx")
+
+[editable path="Hitbox"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba7vffmd7s3jo"]
+[gd_scene load_steps=11 format=3 uid="uid://ba7vffmd7s3jo"]
 
 [ext_resource type="Script" uid="uid://bcouoaoxpjd2c" path="res://Actors/Missile/missile.gd" id="1_40kgx"]
 [ext_resource type="Texture2D" uid="uid://cwlrncfft6kag" path="res://Actors/Missile/_art/missile.png" id="1_f72ud"]
+[ext_resource type="PackedScene" uid="uid://csdc4kco3ncf5" path="res://Actors/Components/Hurtbox/Hurtbox.tscn" id="3_ukxhg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40kgx"]
 atlas = ExtResource("1_f72ud")
@@ -43,6 +44,9 @@ animations = [{
 radius = 2.0
 height = 8.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7frp"]
+radius = 5.0
+
 [node name="Missile" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
@@ -55,3 +59,11 @@ frame_progress = 0.26358187
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_f72ud")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_ukxhg")]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_j7frp")
+
+[editable path="Hurtbox"]

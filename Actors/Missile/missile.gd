@@ -6,6 +6,7 @@ const HORIZONTAL_ACCEL = 20.0
 
 
 func _ready() -> void:
+	$Hurtbox.on_hit.connect(_on_hit)
 	velocity = Vector2(0, SPEED)
 
 
@@ -15,3 +16,7 @@ func _physics_process(delta: float) -> void:
 		acceleration *= -1
 	velocity.x += acceleration
 	move_and_slide()
+
+
+func _on_hit() -> void:
+	queue_free()
