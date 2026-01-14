@@ -41,12 +41,13 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f72ud"]
-radius = 2.0
-height = 8.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j7frp"]
+radius = 4.0
+height = 10.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j7frp"]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsf76"]
+radius = 4.0
+height = 10.0
 
 [node name="Missile" type="CharacterBody2D"]
 collision_layer = 2
@@ -59,16 +60,14 @@ autoplay = "default"
 frame_progress = 0.26358187
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_f72ud")
+shape = SubResource("CapsuleShape2D_j7frp")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_ukxhg")]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_j7frp")
+shape = SubResource("CapsuleShape2D_bsf76")
 
 [node name="DownwardTowardsPlayer" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("4_j7frp")]
 subject = NodePath("..")
