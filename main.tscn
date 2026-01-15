@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0khkk0nmdh1n" path="res://Backgrounds/ScrollingSpace/ScrollingSpace.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drthg1m8xc5eh" path="res://Actors/PlayerShip/PlayerShip.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://deb5stmt5ecmn" path="res://Level/PlayerBoundaries.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://deb5stmt5ecmn" path="res://Level/LevelBoundaries/LevelBoundaries.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://gcg5xd5mxmjp" path="res://Level/Approach/Approach.tscn" id="4_1bvp3"]
 
 [node name="Node2D" type="Node2D"]
