@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://drthg1m8xc5eh"]
+[gd_scene load_steps=7 format=3 uid="uid://drthg1m8xc5eh"]
 
 [ext_resource type="Script" uid="uid://uim1eimld2py" path="res://Actors/PlayerShip/player_ship.gd" id="1_dnh3m"]
 [ext_resource type="Texture2D" uid="uid://cj37ksbqyn2sx" path="res://Actors/PlayerShip/_art/player_ship.png" id="1_o4oq4"]
+[ext_resource type="PackedScene" uid="uid://dde35rv6qbao4" path="res://Actors/PlayerShip/Shield/Shield.tscn" id="3_a35rf"]
+[ext_resource type="PackedScene" uid="uid://csdc4kco3ncf5" path="res://Actors/Components/Hurtbox/Hurtbox.tscn" id="4_4rfch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dnh3m"]
-radius = 8.0
+radius = 8.062258
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gdeyu"]
+radius = 3.1622777
 
 [node name="PlayerShip" type="CharacterBody2D"]
 script = ExtResource("1_dnh3m")
@@ -20,3 +25,16 @@ shape = SubResource("CircleShape2D_dnh3m")
 [node name="ShotTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="Shield" parent="." instance=ExtResource("3_a35rf")]
+visible = false
+autoplay = "default"
+frame_progress = 0.54041725
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_4rfch")]
+collision_mask = 6
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_gdeyu")
+
+[editable path="Hurtbox"]

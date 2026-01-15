@@ -11,6 +11,7 @@ func _ready() -> void:
 	Global.player = self
 	z_index = Global.RenderOrder.PLAYER
 	$ShotTimer.timeout.connect(expire_shot_cooldown)
+	$Hurtbox.on_hit.connect(_on_hit)
 
 
 func expire_shot_cooldown() -> void:
@@ -49,3 +50,17 @@ func animate() -> void:
 	else:
 		$Sprite2D.frame = 0
 	$Sprite2D.flip_h = movement_vector.x < 0
+
+
+func _on_hit(_dmg: int) -> void:
+	$Shield.visible = true
+	$Hurtbox.set_deferred("monitoring", false)
+	$Hurtbox.set_deferred("monitorable", false)
+	$Sprite2D.modulate.a = 0.5
+
+	await get_tree().create_timer(2.0).timeout
+
+	$Shield.visible = false
+	$Hurtbox.set_deferred("monitoring", true)
+	$Hurtbox.set_deferred("monitorable", true)
+	$Sprite2D.modulate.a = 1.0
