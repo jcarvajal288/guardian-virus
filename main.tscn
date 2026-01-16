@@ -18,5 +18,5 @@ position = Vector2(81, 110)
 [node name="Approach" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(1, 0)
 
-[node name="EyeBoss" parent="." instance=ExtResource("5_lquwl")]
+[node name="Eye" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(80, 16)
