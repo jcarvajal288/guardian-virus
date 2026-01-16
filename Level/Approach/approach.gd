@@ -10,8 +10,9 @@ const MISSILE: PackedScene = preload("res://Actors/Missile/Missile.tscn")
 const SPIDER: PackedScene = preload("res://Actors/Spider/Spider.tscn")
 
 func _ready() -> void:
-	$MissileSpawnTimer.timeout.connect(spawn_missile)
-	$SpiderSpawnTimer.timeout.connect(spawn_spider)
+	pass
+	# $MissileSpawnTimer.timeout.connect(spawn_missile)
+	# $SpiderSpawnTimer.timeout.connect(spawn_spider)
 
 
 func spawn_missile() -> void:
