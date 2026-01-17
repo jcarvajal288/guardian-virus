@@ -4,7 +4,6 @@ const MISSILE: PackedScene = preload("res://Actors/Missile/Missile.tscn")
 
 
 func _ready() -> void:
-	print(global_position)
 	$LaunchTimer.timeout.connect(launch_missile)
 
 
