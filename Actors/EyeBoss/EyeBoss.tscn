@@ -16,3 +16,12 @@ position = Vector2(-44, -4)
 
 [node name="EnergyTurret" parent="." instance=ExtResource("3_xkob0")]
 position = Vector2(60, 4)
+
+[node name="EnergyTurret2" parent="." instance=ExtResource("3_xkob0")]
+position = Vector2(60, -4)
+
+[node name="EnergyTurret3" parent="." instance=ExtResource("3_xkob0")]
+position = Vector2(-60, -4)
+
+[node name="EnergyTurret4" parent="." instance=ExtResource("3_xkob0")]
+position = Vector2(-60, 4)
