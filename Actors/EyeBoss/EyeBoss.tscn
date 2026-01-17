@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bss5mve8nprvt"]
+
+[ext_resource type="PackedScene" uid="uid://qq71e5132xst" path="res://Actors/EyeBoss/Eye/Eye.tscn" id="1_yoyqu"]
+[ext_resource type="PackedScene" uid="uid://cqsepu2bglx5f" path="res://Actors/EyeBoss/MissileLauncher/MissileLauncher.tscn" id="2_xkob0"]
+
+[node name="EyeBoss" type="Node2D"]
+
+[node name="Eye" parent="." instance=ExtResource("1_yoyqu")]
+
+[node name="MissileLauncher" parent="." instance=ExtResource("2_xkob0")]
+position = Vector2(44, -4)
+
+[node name="MissileLauncher2" parent="." instance=ExtResource("2_xkob0")]
+position = Vector2(-44, -4)
