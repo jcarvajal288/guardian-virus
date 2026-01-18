@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cs38ah8swkwmh"]
 
 [ext_resource type="Texture2D" uid="uid://cp8pyhpqxvfv" path="res://Actors/Spider/_art/spider.png" id="1_cue1s"]
-[ext_resource type="Script" uid="uid://bcppyafsvb5yw" path="res://Actors/enemy.gd" id="1_eyx8a"]
+[ext_resource type="Script" uid="uid://n5lrusg5fmqd" path="res://Actors/Spider/spider.gd" id="1_eyx8a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tyr8e"]
 atlas = ExtResource("1_cue1s")
