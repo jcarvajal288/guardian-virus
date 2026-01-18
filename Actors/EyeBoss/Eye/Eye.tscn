@@ -15,7 +15,7 @@ texture = ExtResource("2_eci46")
 [node name="EyeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_qujhq")
 hframes = 4
-frame = 3
+frame = 1
 
 [node name="FireArc" parent="." instance=ExtResource("4_wumed")]
 bullet_type = ExtResource("5_gfxtg")

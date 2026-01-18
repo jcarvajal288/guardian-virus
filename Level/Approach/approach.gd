@@ -8,11 +8,13 @@ const SPAWN_TOP_RIGHT = Vector2(150.0, -20)
 
 const MISSILE: PackedScene = preload("res://Actors/Missile/Missile.tscn")
 const SPIDER: PackedScene = preload("res://Actors/Spider/Spider.tscn")
+const BOSS: PackedScene = preload("res://Actors/EyeBoss/EyeBoss.tscn")
 
 func _ready() -> void:
 	pass
-	$MissileSpawnTimer.timeout.connect(spawn_missile)
-	$SpiderSpawnTimer.timeout.connect(spawn_spider)
+	# $MissileSpawnTimer.timeout.connect(spawn_missile)
+	# $SpiderSpawnTimer.timeout.connect(spawn_spider)
+	spawn_boss()
 
 
 func spawn_missile() -> void:
@@ -50,3 +52,9 @@ func spawn_spider() -> void:
 	spider.add_child(move_pattern)
 	spider.add_child(bullet_pattern)
 	get_parent().add_child.call_deferred(spider)
+
+
+func spawn_boss() -> void:
+	var boss = BOSS.instantiate()
+	boss.global_position = Vector2(80, -16)
+	get_parent().add_child.call_deferred(boss)

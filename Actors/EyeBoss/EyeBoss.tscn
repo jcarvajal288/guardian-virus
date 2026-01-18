@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bss5mve8nprvt"]
+[gd_scene load_steps=5 format=3 uid="uid://bss5mve8nprvt"]
 
+[ext_resource type="Script" uid="uid://0km3ln81mq70" path="res://Actors/EyeBoss/eye_boss.gd" id="1_eci46"]
 [ext_resource type="PackedScene" uid="uid://qq71e5132xst" path="res://Actors/EyeBoss/Eye/Eye.tscn" id="1_yoyqu"]
 [ext_resource type="PackedScene" uid="uid://cqsepu2bglx5f" path="res://Actors/EyeBoss/MissileLauncher/MissileLauncher.tscn" id="2_xkob0"]
 [ext_resource type="PackedScene" uid="uid://u2qm7gv6w7bd" path="res://Actors/EyeBoss/EnergyTurret.tscn" id="3_xkob0"]
 
 [node name="EyeBoss" type="Node2D"]
+script = ExtResource("1_eci46")
 
 [node name="Eye" parent="." instance=ExtResource("1_yoyqu")]
 
