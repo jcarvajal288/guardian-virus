@@ -1,14 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0khkk0nmdh1n"]
+[gd_scene load_steps=6 format=3 uid="uid://c0khkk0nmdh1n"]
 
 [ext_resource type="Texture2D" uid="uid://bsgtkndyef2bb" path="res://Backgrounds/ScrollingSpace/_art/star_background.png" id="1_1wina"]
 [ext_resource type="Texture2D" uid="uid://badjlu5ee3xoq" path="res://Backgrounds/ScrollingSpace/_art/dust_layer_1.png" id="2_aubvq"]
+[ext_resource type="Script" uid="uid://cg075exofjyjl" path="res://Backgrounds/ScrollingSpace/planet.gd" id="2_qoyc2"]
 [ext_resource type="Texture2D" uid="uid://b3jhnvuvnmurq" path="res://Backgrounds/ScrollingSpace/_art/dust_layer_2.png" id="3_aubvq"]
+[ext_resource type="Texture2D" uid="uid://dsfhhechljxus" path="res://Backgrounds/ScrollingSpace/_art/planet.png" id="3_utr1g"]
 
-[node name="Node2D" type="Node2D"]
+[node name="ScrollingSpace" type="Node2D"]
 
 [node name="StarBackground" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
 texture = ExtResource("1_1wina")
+
+[node name="Planet" type="Parallax2D" parent="."]
+repeat_size = Vector2(0, 144)
+autoscroll = Vector2(0, 3)
+script = ExtResource("2_qoyc2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planet"]
+position = Vector2(80, -72)
+texture = ExtResource("3_utr1g")
 
 [node name="DustLayer1" type="Parallax2D" parent="."]
 repeat_size = Vector2(0, 432)
