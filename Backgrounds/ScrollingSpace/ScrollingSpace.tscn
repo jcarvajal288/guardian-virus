@@ -1,14 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0khkk0nmdh1n"]
+[gd_scene load_steps=4 format=3 uid="uid://c0khkk0nmdh1n"]
 
-[ext_resource type="Script" uid="uid://v4euy047fniw" path="res://Backgrounds/ScrollingSpace/scrolling_space.gd" id="1_55dy2"]
-[ext_resource type="Texture2D" uid="uid://bnyo7fykpcyh6" path="res://Backgrounds/ScrollingSpace/_art/stars.png" id="2_1wina"]
+[ext_resource type="Texture2D" uid="uid://bsgtkndyef2bb" path="res://Backgrounds/ScrollingSpace/_art/star_background.png" id="1_1wina"]
+[ext_resource type="Texture2D" uid="uid://badjlu5ee3xoq" path="res://Backgrounds/ScrollingSpace/_art/dust_layer_1.png" id="2_aubvq"]
+[ext_resource type="Texture2D" uid="uid://b3jhnvuvnmurq" path="res://Backgrounds/ScrollingSpace/_art/dust_layer_2.png" id="3_aubvq"]
 
-[node name="ScrollingSpace" type="ParallaxBackground"]
-script = ExtResource("1_55dy2")
+[node name="Node2D" type="Node2D"]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(256, 256)
+[node name="StarBackground" type="Sprite2D" parent="."]
+position = Vector2(80, 72)
+texture = ExtResource("1_1wina")
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
-texture = ExtResource("2_1wina")
-centered = false
+[node name="DustLayer1" type="Parallax2D" parent="."]
+repeat_size = Vector2(0, 432)
+autoscroll = Vector2(0, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="DustLayer1"]
+position = Vector2(80, 216)
+texture = ExtResource("2_aubvq")
+
+[node name="DustLayer2" type="Parallax2D" parent="."]
+repeat_size = Vector2(0, 432)
+autoscroll = Vector2(0, 160)
+
+[node name="Sprite2D" type="Sprite2D" parent="DustLayer2"]
+position = Vector2(80, 216)
+texture = ExtResource("3_aubvq")
