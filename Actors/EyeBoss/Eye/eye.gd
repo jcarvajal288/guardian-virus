@@ -10,13 +10,31 @@ const EYE_LOOK_RIGHT_DMG = 5
 const FRAME_BOUNDARY_LEFT = 57
 const FRAME_BOUNDARY_RIGHT = 103
 
+const dying_eye_move_threshold = 0.2
+
 @onready var is_damage_flashing = false
+@onready var is_dying = false
+@onready var dying_eye_move_counter = 0
+@onready var dying_eye_move_index = 0
+@onready var dying_eye_move_frames = [
+	EYE_LOOK_LEFT,
+	EYE_LOOK_DOWN,
+	EYE_LOOK_RIGHT,
+	EYE_LOOK_DOWN,
+]
 
 func _ready() -> void:
 	$EyeSprite.frame = EYE_LOOK_DOWN
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	if not is_dying:
+		normal_eye_movement()
+	else:
+		dying_eye_movement(delta)
+
+
+func normal_eye_movement() -> void:
 	var player_pos_x = Global.player.global_position.x
 	if player_pos_x < FRAME_BOUNDARY_LEFT:
 		if is_damage_flashing:
@@ -38,11 +56,27 @@ func _process(_delta: float) -> void:
 		$FireArc.global_position = $FireDown.global_position
 
 
+func dying_eye_movement(delta: float) -> void:
+	dying_eye_move_counter += delta
+	if dying_eye_move_counter >= dying_eye_move_threshold:
+		dying_eye_move_index += 1
+		if dying_eye_move_index >= dying_eye_move_frames.size():
+			dying_eye_move_index = 0
+		$EyeSprite.frame = dying_eye_move_frames[dying_eye_move_index]
+		dying_eye_move_counter = 0
+
+
 func _on_hit(_damage: float) -> void:
 	damage_flash()
 
 
 func damage_flash() -> void:
 	is_damage_flashing = true
-	await get_tree().create_timer(0.1).timeout
+	await Global.wait_for_sec(0.1)
 	is_damage_flashing = false
+
+
+func start_dying() -> void:
+	is_dying = true
+	$EyeSprite.flip_v = true
+	$FireArc.process_mode =  ProcessMode.PROCESS_MODE_DISABLED

@@ -31,5 +31,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_death() -> void:
-	print("boss defeated")
 	set_children_processing_mode(ProcessMode.PROCESS_MODE_DISABLED)
+	$Eye.process_mode = ProcessMode.PROCESS_MODE_INHERIT
+	$Eye.start_dying()

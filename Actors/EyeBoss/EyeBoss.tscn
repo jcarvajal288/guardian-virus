@@ -34,7 +34,7 @@ position = Vector2(-60, -4)
 position = Vector2(-60, 4)
 
 [node name="Health" parent="." instance=ExtResource("5_qujhq")]
-max_health = 50.0
+max_health = 10.0
 
 [node name="Hurtbox" parent="." instance=ExtResource("6_hkjag")]
 collision_layer = 2
