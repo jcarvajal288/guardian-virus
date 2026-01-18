@@ -12,16 +12,14 @@ const ENTER_SPEED = 10.0
 
 func _ready() -> void:
 	set_children_processing_mode(ProcessMode.PROCESS_MODE_DISABLED)
+	$Hurtbox.on_hit.connect($Health._on_hit)
+	$Hurtbox.on_hit.connect($Eye._on_hit)
+	$Health.on_death.connect(_on_death)
 
 
 func set_children_processing_mode(mode: ProcessMode) -> void:
-	$Eye.process_mode = mode
-	$MissileLauncher.process_mode = mode
-	$MissileLauncher2.process_mode = mode
-	$EnergyTurret.process_mode = mode
-	$EnergyTurret2.process_mode = mode
-	$EnergyTurret3.process_mode = mode
-	$EnergyTurret4.process_mode = mode
+	for child in get_children():
+		child.process_mode = mode
 
 
 func _physics_process(delta: float) -> void:
@@ -30,3 +28,8 @@ func _physics_process(delta: float) -> void:
 		set_children_processing_mode(ProcessMode.PROCESS_MODE_INHERIT)
 	elif phase == Phase.ENTERING:
 		global_position.y += ENTER_SPEED * delta
+
+
+func _on_death() -> void:
+	print("boss defeated")
+	set_children_processing_mode(ProcessMode.PROCESS_MODE_DISABLED)

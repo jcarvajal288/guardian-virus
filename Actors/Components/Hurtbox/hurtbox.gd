@@ -1,6 +1,6 @@
 class_name Hurtbox extends Area2D
 
-signal on_hit(dmg: int)
+signal on_hit(dmg: float)
 
-func register_hit(dmg: int) -> void:
+func register_hit(dmg: float) -> void:
 	on_hit.emit(dmg)

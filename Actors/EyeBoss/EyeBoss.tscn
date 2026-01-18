@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bss5mve8nprvt"]
+[gd_scene load_steps=8 format=3 uid="uid://bss5mve8nprvt"]
 
 [ext_resource type="Script" uid="uid://0km3ln81mq70" path="res://Actors/EyeBoss/eye_boss.gd" id="1_eci46"]
 [ext_resource type="PackedScene" uid="uid://qq71e5132xst" path="res://Actors/EyeBoss/Eye/Eye.tscn" id="1_yoyqu"]
 [ext_resource type="PackedScene" uid="uid://cqsepu2bglx5f" path="res://Actors/EyeBoss/MissileLauncher/MissileLauncher.tscn" id="2_xkob0"]
 [ext_resource type="PackedScene" uid="uid://u2qm7gv6w7bd" path="res://Actors/EyeBoss/EnergyTurret.tscn" id="3_xkob0"]
+[ext_resource type="PackedScene" uid="uid://dqrd5e3alvuxr" path="res://Actors/Components/Health/Health.tscn" id="5_qujhq"]
+[ext_resource type="PackedScene" uid="uid://csdc4kco3ncf5" path="res://Actors/Components/Hurtbox/Hurtbox.tscn" id="6_hkjag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vv4rw"]
+size = Vector2(33, 20)
 
 [node name="EyeBoss" type="Node2D"]
 script = ExtResource("1_eci46")
@@ -27,3 +32,16 @@ position = Vector2(-60, -4)
 
 [node name="EnergyTurret4" parent="." instance=ExtResource("3_xkob0")]
 position = Vector2(-60, 4)
+
+[node name="Health" parent="." instance=ExtResource("5_qujhq")]
+max_health = 50.0
+
+[node name="Hurtbox" parent="." instance=ExtResource("6_hkjag")]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_vv4rw")
+
+[editable path="Hurtbox"]

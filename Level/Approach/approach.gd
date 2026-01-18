@@ -14,7 +14,7 @@ func _ready() -> void:
 	pass
 	# $MissileSpawnTimer.timeout.connect(spawn_missile)
 	# $SpiderSpawnTimer.timeout.connect(spawn_spider)
-	# spawn_boss()
+	spawn_boss()
 
 
 func spawn_missile() -> void:

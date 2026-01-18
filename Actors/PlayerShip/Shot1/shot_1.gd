@@ -7,6 +7,7 @@ const DAMAGE = 1
 func _ready() -> void:
 	z_index = Global.RenderOrder.SHOT
 	body_entered.connect(_on_hit)
+	area_entered.connect(_on_area_hit)
 
 
 func _physics_process(delta: float) -> void:
@@ -18,3 +19,9 @@ func _on_hit(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		body.do_damage(1)
 	queue_free()
+
+
+func _on_area_hit(area: Area2D) -> void:
+	if area is Hurtbox:
+		area.register_hit(1)
+		queue_free()
