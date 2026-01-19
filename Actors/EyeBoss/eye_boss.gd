@@ -2,13 +2,16 @@ extends Node2D
 
 enum Phase {
 	ENTERING,
-	FIGHTING
+	FIGHTING,
+	DYING
 }
 
 var phase: Phase = Phase.ENTERING
 
 const ENTER_SPEED = 10.0
+const DYING_SPEED = 20.0
 
+const DEATH_EXPLOSION: PackedScene = preload("res://Actors/EyeBoss/DeathExplosion/DeathExplosion.tscn")
 
 func _ready() -> void:
 	set_children_processing_mode(ProcessMode.PROCESS_MODE_DISABLED)
@@ -28,6 +31,11 @@ func _physics_process(delta: float) -> void:
 		set_children_processing_mode(ProcessMode.PROCESS_MODE_INHERIT)
 	elif phase == Phase.ENTERING:
 		global_position.y += ENTER_SPEED * delta
+	elif phase == Phase.DYING:
+		if global_position.y < 64.0:
+			global_position.y += DYING_SPEED * delta
+		else:
+			explode()
 
 
 func _on_death() -> void:
@@ -39,3 +47,13 @@ func _on_death() -> void:
 	explosion_field.num_wave = 3
 	explosion_field.wave_delay = 0.1
 	add_child(explosion_field)
+	phase = Phase.DYING
+
+
+func explode():
+	var explosion = DEATH_EXPLOSION.instantiate()
+	explosion.global_position = global_position
+	explosion.global_position.y += 8
+	get_tree().root.add_child(explosion)
+	await Global.wait_for_sec(0.5)
+	queue_free()

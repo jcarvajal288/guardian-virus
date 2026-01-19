@@ -20,6 +20,7 @@ enum RenderOrder {
 	SHOT = 1,
 	ENEMY = 9,
 	BULLET = 10,
+	TOP = 20,
 }
 
 
