@@ -34,3 +34,8 @@ func _on_death() -> void:
 	set_children_processing_mode(ProcessMode.PROCESS_MODE_DISABLED)
 	$Eye.process_mode = ProcessMode.PROCESS_MODE_INHERIT
 	$Eye.start_dying()
+	var explosion_field = Effects.EXPLOSION_FIELD.instantiate()
+	explosion_field.dimensions = Vector2(128, 32)
+	explosion_field.num_wave = 3
+	explosion_field.wave_delay = 0.1
+	add_child(explosion_field)
