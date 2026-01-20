@@ -24,13 +24,18 @@ func _physics_process(_delta: float) -> void:
 	animate()
 
 
-func move() -> void:
-	var movement_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+func get_movement_vector() -> Vector2:
+	var mv = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var snapped_vector = Vector2(
-		snapped(movement_vector.x, 0.5), 
-		snapped(movement_vector.y, 0.5)
+		snapped(mv.x, 0.5), 
+		snapped(mv.y, 0.5)
 	).normalized()
-	velocity = snapped_vector * SPEED
+	return snapped_vector
+
+
+func move() -> void:
+	var movement_vector = get_movement_vector()
+	velocity = movement_vector * SPEED
 	move_and_slide()
 
 
@@ -44,7 +49,7 @@ func shoot() -> void:
 
 
 func animate() -> void:
-	var movement_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var movement_vector = get_movement_vector()
 	if movement_vector.x != 0:
 		$Sprite2D.frame = 1
 	else:
