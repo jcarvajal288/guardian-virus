@@ -23,6 +23,10 @@ enum RenderOrder {
 	TOP = 20,
 }
 
+@warning_ignore_start("unused_signal")
+signal player_health_changed
+@warning_ignore_restore("unused_signal")
+
 
 func wait_for_sec(secs: float) -> void:
 	await get_tree().create_timer(secs).timeout

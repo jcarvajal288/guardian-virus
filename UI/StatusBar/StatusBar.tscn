@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://odae08ihwgt0"]
+[gd_scene load_steps=3 format=3 uid="uid://odae08ihwgt0"]
 
 [ext_resource type="Texture2D" uid="uid://c6x6sai7bi06b" path="res://UI/_art/bottom_bar_background.png" id="1_k6gla"]
+[ext_resource type="PackedScene" uid="uid://b3cqaau7t1pa4" path="res://UI/StatusBar/HealthBar/HealthBar.tscn" id="2_wchv5"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -15,3 +16,7 @@ grow_vertical = 2
 [node name="Sprite2D" type="Sprite2D" parent="StatusBar"]
 position = Vector2(80, 136)
 texture = ExtResource("1_k6gla")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_wchv5")]
+z_index = 1
+position = Vector2(8, 135)

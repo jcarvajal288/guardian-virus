@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dga6l458didhl"]
+
+[ext_resource type="Texture2D" uid="uid://dxwf2bdfj2kfw" path="res://UI/_art/health_pips.png" id="1_m7g7x"]
+
+[node name="HealthPip" type="Sprite2D"]
+z_index = 2
+texture = ExtResource("1_m7g7x")
+hframes = 5
