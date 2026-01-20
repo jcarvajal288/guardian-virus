@@ -52,7 +52,10 @@ func animate() -> void:
 	$Sprite2D.flip_h = movement_vector.x < 0
 
 
-func _on_hit(_dmg: int) -> void:
+func _on_hit(damage: int) -> void:
+	$Health._on_hit(damage)
+	Global.player_health_changed.emit($Health.current_health, $Health.max_health)
+
 	$Shield.visible = true
 	$Hurtbox.set_deferred("monitoring", false)
 	$Hurtbox.set_deferred("monitorable", false)

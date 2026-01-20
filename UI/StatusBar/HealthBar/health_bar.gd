@@ -14,6 +14,7 @@ var starting_health = 5.0
 
 func _ready() -> void:
 	draw_health(starting_health, starting_health)
+	Global.player_health_changed.connect(draw_health)
 
 
 func draw_health(current_health: float, max_health: float) -> void:
