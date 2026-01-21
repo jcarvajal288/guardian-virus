@@ -1,22 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cevmhwburofnj"]
+[gd_scene load_steps=4 format=3 uid="uid://cevmhwburofnj"]
 
-[ext_resource type="PackedScene" uid="uid://c0khkk0nmdh1n" path="res://Backgrounds/ScrollingSpace/ScrollingSpace.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://drthg1m8xc5eh" path="res://Actors/PlayerShip/PlayerShip.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://deb5stmt5ecmn" path="res://Level/LevelBoundaries/LevelBoundaries.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://gcg5xd5mxmjp" path="res://Level/Approach/Approach.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://odae08ihwgt0" path="res://UI/StatusBar/StatusBar.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://lvqoedsmjxkn" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cnw8wodxx25p" path="res://Level/Approach/Level1.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://djhp2w3nm3qqk" path="res://UI/GameOverScreen.tscn" id="3_h2yge"]
 
-[node name="Node2D" type="Node2D"]
-
-[node name="ScrollingSpace" parent="." instance=ExtResource("1_ig7tw")]
-
-[node name="PlayerShip" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(81, 110)
-
-[node name="PlayerBoundaries" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(1, -6)
-
-[node name="Approach" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(1, 0)
-
-[node name="StatusBar" parent="." instance=ExtResource("5_lquwl")]
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0xm2m")
+current_level_scene = ExtResource("1_ig7tw")
+game_over_scene = ExtResource("3_h2yge")

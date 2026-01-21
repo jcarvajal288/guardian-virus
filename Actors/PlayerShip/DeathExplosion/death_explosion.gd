@@ -7,7 +7,7 @@ func start() -> void:
 	explosion_field.dimensions = Vector2(16, 16)
 	explosion_field.num_wave = 2
 	explosion_field.wave_delay = 0.1
-	get_tree().root.add_child(explosion_field)
+	add_child(explosion_field)
 
 	await Global.wait_for_sec(0.5)
 
@@ -17,4 +17,5 @@ func start() -> void:
 	var dummy_player = DUMMY_PLAYER.instantiate()
 	dummy_player.global_position = Global.player.global_position
 	Global.player = dummy_player
+	Global.game_over.emit()
 	get_parent().queue_free()

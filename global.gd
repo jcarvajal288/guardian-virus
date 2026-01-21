@@ -25,6 +25,7 @@ enum RenderOrder {
 
 @warning_ignore_start("unused_signal")
 signal player_health_changed
+signal game_over
 @warning_ignore_restore("unused_signal")
 
 
