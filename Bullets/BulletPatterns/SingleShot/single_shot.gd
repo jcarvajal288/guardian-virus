@@ -7,6 +7,8 @@ extends Node2D
 @export var repeat_time = 1.0
 @export var num_bullets = Global.INFINITE
 
+@export var damage = 1.0
+
 
 func _ready() -> void:
 	$StartupTimer.timeout.connect(begin)
@@ -24,6 +26,7 @@ func fire() -> void:
 	bullet.direction = direction
 	bullet.speed = speed
 	bullet.global_position = global_position
+	bullet.damage = damage
 	get_tree().root.add_child(bullet)	
 
 	if num_bullets > 0:

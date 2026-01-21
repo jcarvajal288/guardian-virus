@@ -11,10 +11,9 @@ const SPIDER: PackedScene = preload("res://Actors/Spider/Spider.tscn")
 const BOSS: PackedScene = preload("res://Actors/EyeBoss/EyeBoss.tscn")
 
 func _ready() -> void:
-	# $MissileSpawnTimer.timeout.connect(spawn_missile)
-	# $SpiderSpawnTimer.timeout.connect(spawn_spider)
-	# $BossTimer.timeout.connect(spawn_boss)
-	spawn_boss()
+	$MissileSpawnTimer.timeout.connect(spawn_missile)
+	$SpiderSpawnTimer.timeout.connect(spawn_spider)
+	$BossTimer.timeout.connect(spawn_boss)
 
 
 func spawn_missile() -> void:
@@ -47,6 +46,7 @@ func spawn_spider() -> void:
 	bullet_pattern.direction = Global.TOWARDS_PLAYER
 	bullet_pattern.startup_time = 0.5
 	bullet_pattern.repeat_time = 1.0
+	bullet_pattern.damage = GameStats.SPIDER_DAMAGE
 
 	spider.global_position = spawns[spawn]
 	spider.add_child(move_pattern)

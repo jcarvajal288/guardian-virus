@@ -2,7 +2,7 @@ class_name PlayerShip extends CharacterBody2D
 
 const SHOT_1 = preload("res://Actors/PlayerShip/Shot1/Shot1.tscn")
 
-const SPEED = 150
+const SPEED = GameStats.PLAYER_SPEED
 
 var can_shoot = true
 
@@ -12,6 +12,7 @@ func _ready() -> void:
 	z_index = Global.RenderOrder.PLAYER
 	$ShotTimer.timeout.connect(expire_shot_cooldown)
 	$Hurtbox.on_hit.connect(_on_hit)
+	$Health.set_health(GameStats.PLAYER_STARTING_HEALTH)
 
 
 func expire_shot_cooldown() -> void:
@@ -57,7 +58,7 @@ func animate() -> void:
 	$Sprite2D.flip_h = movement_vector.x < 0
 
 
-func _on_hit(damage: int) -> void:
+func _on_hit(damage: float) -> void:
 	$Health._on_hit(damage)
 	Global.player_health_changed.emit($Health.current_health, $Health.max_health)
 
@@ -66,7 +67,7 @@ func _on_hit(damage: int) -> void:
 	$Hurtbox.set_deferred("monitorable", false)
 	$Sprite2D.modulate.a = 0.5
 
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(GameStats.PLAYER_HIT_INVULN_IN_SECS).timeout
 
 	$Shield.visible = false
 	$Hurtbox.set_deferred("monitoring", true)

@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var target: Global.CollisionLayer = Global.CollisionLayer.PLAYER
-@export var damage = 1
+@export var damage = 1.0
 
 signal on_hitbox_triggered
 

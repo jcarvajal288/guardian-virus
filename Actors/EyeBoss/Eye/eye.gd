@@ -25,6 +25,7 @@ const dying_eye_move_threshold = 0.2
 
 func _ready() -> void:
 	$EyeSprite.frame = EYE_LOOK_DOWN
+	$FireArc.damage = GameStats.EYE_BOSS_EYE_BULLET_DAMAGE
 
 
 func _process(delta: float) -> void:

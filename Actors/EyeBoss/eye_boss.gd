@@ -18,6 +18,7 @@ func _ready() -> void:
 	$Hurtbox.on_hit.connect($Health._on_hit)
 	$Hurtbox.on_hit.connect($Eye._on_hit)
 	$Health.on_death.connect(_on_death)
+	$Health.set_health(GameStats.EYE_BOSS_STARTING_HEALTH)
 
 
 func set_children_processing_mode(mode: ProcessMode) -> void:

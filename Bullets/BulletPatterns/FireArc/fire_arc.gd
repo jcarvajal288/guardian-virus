@@ -9,6 +9,8 @@ extends Node2D
 @export var arc: float
 @export var bullets_in_arc: int
 
+@export var damage = 1.0
+
 
 func _ready() -> void:
 	$StartupTimer.timeout.connect(begin)

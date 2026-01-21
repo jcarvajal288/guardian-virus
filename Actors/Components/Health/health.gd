@@ -7,6 +7,11 @@ signal health_changed(current_health: float, max_health: float)
 signal on_death
 
 
+func set_health(new_health: float) -> void:
+	max_health = new_health
+	current_health = max_health
+
+
 func _on_hit(damage: float) -> void:
 	current_health -= damage
 	health_changed.emit(current_health, max_health)

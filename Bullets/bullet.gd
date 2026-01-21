@@ -2,6 +2,7 @@ extends Area2D
 
 var speed = 100.0
 var direction = Vector2.DOWN
+var damage = 1.0
 
 
 func _ready() -> void:
@@ -18,4 +19,4 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Hurtbox:
-		area.register_hit(1)
+		area.register_hit(damage)

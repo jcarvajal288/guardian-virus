@@ -21,6 +21,7 @@ Global="*res://global.gd"
 MovementPatterns="*res://Actors/Components/MovementPatterns/movement_patterns.gd"
 BulletPatterns="*res://Bullets/BulletPatterns/bullet_patterns.gd"
 Effects="*res://Effects/effects.gd"
+GameStats="*res://Actors/game_stats.gd"
 
 [display]
 
