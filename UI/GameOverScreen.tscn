@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://djhp2w3nm3qqk"]
+[gd_scene load_steps=6 format=3 uid="uid://djhp2w3nm3qqk"]
 
+[ext_resource type="Script" uid="uid://b65fqofmrfto2" path="res://UI/game_over_screen.gd" id="1_asb5q"]
 [ext_resource type="Texture2D" uid="uid://c1kehi8p61cu7" path="res://UI/_art/black_background.png" id="1_vq8y3"]
 [ext_resource type="FontFile" uid="uid://bfrgy55f40ppw" path="res://Assets/Fonts/DiaryOfAn8BitMage-lYDD.ttf" id="2_asb5q"]
 
@@ -13,6 +14,8 @@ font_size = 8
 font_color = Color(0.8784314, 0.972549, 0.8117647, 1)
 
 [node name="GameOverScreen" type="Node2D"]
+z_index = 100
+script = ExtResource("1_asb5q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
