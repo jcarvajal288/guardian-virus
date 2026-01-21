@@ -13,6 +13,7 @@ func _ready() -> void:
 	$ShotTimer.timeout.connect(expire_shot_cooldown)
 	$Hurtbox.on_hit.connect(_on_hit)
 	$Health.set_health(GameStats.PLAYER_STARTING_HEALTH)
+	$Health.on_death.connect(_on_death)
 
 
 func expire_shot_cooldown() -> void:
@@ -73,3 +74,7 @@ func _on_hit(damage: float) -> void:
 	$Hurtbox.set_deferred("monitoring", true)
 	$Hurtbox.set_deferred("monitorable", true)
 	$Sprite2D.modulate.a = 1.0
+
+
+func _on_death() -> void:
+	$DeathExplosion.start()
