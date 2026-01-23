@@ -6,9 +6,9 @@ const SPAWN_TOP_MIDDLE = Vector2(80, -20)
 const SPAWN_TOP_HALF_RIGHT = Vector2(115, -20)
 const SPAWN_TOP_RIGHT = Vector2(150.0, -20)
 
-const MISSILE: PackedScene = preload("res://Actors/Missile/Missile.tscn")
-const SPIDER: PackedScene = preload("res://Actors/Spider/Spider.tscn")
-const BOSS: PackedScene = preload("res://Actors/EyeBoss/EyeBoss.tscn")
+const MISSILE: PackedScene = preload("res://Actors/Shmup/Missile/Missile.tscn")
+const SPIDER: PackedScene = preload("res://Actors/Shmup/Spider/Spider.tscn")
+const BOSS: PackedScene = preload("res://Actors/Shmup/EyeBoss/EyeBoss.tscn")
 
 func _ready() -> void:
 	$MissileSpawnTimer.timeout.connect(spawn_missile)

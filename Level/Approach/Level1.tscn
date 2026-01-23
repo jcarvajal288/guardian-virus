@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnw8wodxx25p"]
 
 [ext_resource type="PackedScene" uid="uid://c0khkk0nmdh1n" path="res://Backgrounds/ScrollingSpace/ScrollingSpace.tscn" id="1_bgmb1"]
-[ext_resource type="PackedScene" uid="uid://drthg1m8xc5eh" path="res://Actors/PlayerShip/PlayerShip.tscn" id="2_lrg23"]
+[ext_resource type="PackedScene" uid="uid://drthg1m8xc5eh" path="res://Actors/Shmup/PlayerShip/PlayerShip.tscn" id="2_lrg23"]
 [ext_resource type="PackedScene" uid="uid://deb5stmt5ecmn" path="res://Level/LevelBoundaries/LevelBoundaries.tscn" id="3_65vs7"]
 [ext_resource type="PackedScene" uid="uid://gcg5xd5mxmjp" path="res://Level/Approach/Approach.tscn" id="4_xs26y"]
 [ext_resource type="PackedScene" uid="uid://odae08ihwgt0" path="res://UI/StatusBar/StatusBar.tscn" id="5_xo8j1"]
