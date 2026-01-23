@@ -69,6 +69,7 @@ func dying_eye_movement(delta: float) -> void:
 
 func _on_hit(_damage: float) -> void:
 	damage_flash()
+	Sounds.play_sound.emit(Sounds.SoundEffect.BOSS_HIT, global_position)
 
 
 func damage_flash() -> void:

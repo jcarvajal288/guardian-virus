@@ -49,6 +49,7 @@ func _on_death() -> void:
 	explosion_field.wave_delay = 0.1
 	add_child(explosion_field)
 	phase = Phase.DYING
+	Sounds.play_sound.emit(Sounds.SoundEffect.LONG_BOSS_EXPLOSION, global_position)
 
 
 func explode():

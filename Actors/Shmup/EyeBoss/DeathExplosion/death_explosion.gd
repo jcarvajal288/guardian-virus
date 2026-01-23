@@ -8,6 +8,7 @@ func _ready() -> void:
 	z_index = Global.RenderOrder.TOP
 	Global.player.z_index = z_index + 1
 	animation_finished.connect(start_fade_out)
+	Sounds.play_sound.emit(Sounds.SoundEffect.BOSS_EXPLOSION_1, global_position)
 
 
 func start_fade_out() -> void:

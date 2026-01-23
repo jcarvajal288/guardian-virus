@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cevmhwburofnj"]
+[gd_scene load_steps=5 format=3 uid="uid://cevmhwburofnj"]
 
 [ext_resource type="Script" uid="uid://lvqoedsmjxkn" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cnw8wodxx25p" path="res://Level/Approach/Level1.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://djhp2w3nm3qqk" path="res://UI/GameOverScreen.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dxucbx86pi6rn" path="res://Assets/Sounds/SoundManager/SoundManager.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 first_level_scene = ExtResource("1_ig7tw")
 game_over_scene = ExtResource("3_h2yge")
+
+[node name="SoundManager" parent="." instance=ExtResource("4_1bvp3")]

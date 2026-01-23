@@ -47,6 +47,7 @@ func shoot() -> void:
 		shot.global_position = global_position
 		shot.global_position.y -= 8.0
 		get_tree().root.add_child(shot)
+		Sounds.play_sound.emit(Sounds.SoundEffect.PLAYER_SHOT, global_position)
 		can_shoot = false
 
 
@@ -60,6 +61,7 @@ func animate() -> void:
 
 
 func _on_hit(damage: float) -> void:
+	Sounds.play_sound.emit(Sounds.SoundEffect.PLAYER_SHIELD, global_position)
 	$Health._on_hit(damage)
 	Global.player_health_changed.emit($Health.current_health, $Health.max_health)
 
@@ -78,3 +80,4 @@ func _on_hit(damage: float) -> void:
 
 func _on_death() -> void:
 	$DeathExplosion.start()
+	Sounds.play_sound.emit(Sounds.SoundEffect.PLAYER_EXPLOSION, global_position)
