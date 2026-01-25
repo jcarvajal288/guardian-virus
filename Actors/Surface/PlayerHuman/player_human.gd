@@ -41,14 +41,6 @@ func calculate_facing(movement_vector: Vector2) -> void:
 		facing = "Up"
 	elif movement_vector == Vector2.DOWN:
 		facing = "Down"
-	# elif facing == "Down" and movement_vector.y > 1:
-	# 	return
-	# elif facing == "Up" and movement_vector.y < 1:
-	# 	return
-	# elif facing == "Right" and movement_vector.x > 1:
-	# 	return
-	# elif facing == "Left" and movement_vector.x < 1:
-	# 	return
 
 
 func animate(movement_vector: Vector2) -> void:
