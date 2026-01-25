@@ -2,7 +2,7 @@ class_name PlayerShip extends CharacterBody2D
 
 const SHOT_1 = preload("res://Actors/Shmup/PlayerShip/Shot1/Shot1.tscn")
 
-const SPEED = GameStats.PLAYER_SPEED
+const SPEED = GameStats.PLAYER_SHIP_SPEED
 
 var can_shoot = true
 
