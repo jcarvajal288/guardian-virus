@@ -18,6 +18,10 @@ func _ready() -> void:
 
 
 func draw_health(current_health: float, max_health: float) -> void:
+	if current_health < 0.0:
+		current_health = 0.0
+	for child in get_children():
+		child.queue_free()
 	var full_pips = floor(current_health)
 	var fractional_pip = fmod(current_health, 1.0)
 	var empty_pips = floor(max_health - full_pips - fractional_pip)

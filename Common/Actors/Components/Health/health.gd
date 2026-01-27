@@ -14,6 +14,7 @@ func set_health(new_health: float) -> void:
 
 func _on_hit(damage: float) -> void:
 	current_health -= damage
-	health_changed.emit(current_health, max_health)
 	if current_health <= 0:
+		current_health = 0
 		on_death.emit()
+	health_changed.emit(current_health, max_health)

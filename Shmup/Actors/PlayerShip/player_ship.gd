@@ -14,6 +14,7 @@ func _ready() -> void:
 	$Hurtbox.on_hit.connect(_on_hit)
 	$Health.set_health(GameStats.PLAYER_STARTING_HEALTH)
 	$Health.on_death.connect(_on_death)
+	Global.player_health_changed.emit($Health.current_health, $Health.max_health)
 
 
 func expire_shot_cooldown() -> void:
