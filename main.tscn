@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cevmhwburofnj"]
+[gd_scene load_steps=7 format=3 uid="uid://cevmhwburofnj"]
 
 [ext_resource type="Script" uid="uid://lvqoedsmjxkn" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://cnw8wodxx25p" path="res://Shmup/Levels/Approach/Approach.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dpxthe7r4afam" path="res://Surface/Levels/TestLevel/TestLevel.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://djhp2w3nm3qqk" path="res://UI/GameOverScreen.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dxucbx86pi6rn" path="res://Assets/Sounds/SoundManager/SoundManager.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://odae08ihwgt0" path="res://UI/StatusBar/StatusBar.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dahyonuug207n" path="res://Surface/Components/SurfaceCamera/SurfaceCamera.tscn" id="6_272bh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -14,3 +15,5 @@ game_over_scene = ExtResource("3_h2yge")
 [node name="SoundManager" parent="." instance=ExtResource("4_1bvp3")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("6_7mycd")]
+
+[node name="SurfaceCamera" parent="." instance=ExtResource("6_272bh")]

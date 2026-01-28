@@ -27,6 +27,7 @@ enum RenderOrder {
 signal game_over
 signal player_health_changed
 signal reset
+signal bind_camera(rect: Rect2)
 @warning_ignore_restore("unused_signal")
 
 
