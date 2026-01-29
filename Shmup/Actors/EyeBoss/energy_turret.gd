@@ -30,4 +30,4 @@ func fire() -> void:
 	bullet.speed = 50
 	bullet.global_position = global_position
 	bullet.damage = GameStats.ENERGY_TURRET_DAMAGE
-	get_tree().root.add_child(bullet)	
+	Global.add_node_to_level.emit(bullet)

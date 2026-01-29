@@ -13,7 +13,7 @@ func start() -> void:
 
 	var explosion = Effects.EXPLOSION_16x16.instantiate()
 	explosion.global_position = global_position
-	get_tree().root.add_child(explosion)
+	Global.add_node_to_level.emit(explosion)
 	var dummy_player = DUMMY_PLAYER.instantiate()
 	dummy_player.global_position = Global.player.global_position
 	Global.player = dummy_player

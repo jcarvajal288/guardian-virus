@@ -41,6 +41,6 @@ func fire() -> void:
 		bullet.direction = Vector2.from_angle(angle)
 		bullet.speed = speed
 		bullet.global_position = global_position
-		get_tree().root.add_child(bullet)
+		Global.add_node_to_level.emit(bullet)
 
 	$RepeatTimer.start(repeat_time)

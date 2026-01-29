@@ -56,6 +56,6 @@ func explode():
 	var explosion = DEATH_EXPLOSION.instantiate()
 	explosion.global_position = global_position
 	explosion.global_position.y += 8
-	get_tree().root.add_child(explosion)
+	Global.add_node_to_level.emit(explosion)
 	await Global.wait_for_sec(0.5)
 	queue_free()

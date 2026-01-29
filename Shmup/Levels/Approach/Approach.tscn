@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnw8wodxx25p"]
+[gd_scene load_steps=6 format=3 uid="uid://cnw8wodxx25p"]
 
+[ext_resource type="Script" uid="uid://bb4svuo6wnbc1" path="res://Common/level.gd" id="1_k1w1i"]
 [ext_resource type="PackedScene" uid="uid://c0khkk0nmdh1n" path="res://Shmup/Levels/Approach/ScrollingSpace/ScrollingSpace.tscn" id="1_x06so"]
 [ext_resource type="PackedScene" uid="uid://drthg1m8xc5eh" path="res://Shmup/Actors/PlayerShip/PlayerShip.tscn" id="2_k1w1i"]
 [ext_resource type="PackedScene" uid="uid://deb5stmt5ecmn" path="res://Shmup/Levels/LevelBoundaries/LevelBoundaries.tscn" id="3_5uk6s"]
 [ext_resource type="PackedScene" uid="uid://gcg5xd5mxmjp" path="res://Shmup/Levels/Approach/ApproachScript.tscn" id="4_s1p3p"]
 
 [node name="Approach" type="Node2D"]
+script = ExtResource("1_k1w1i")
 
 [node name="ScrollingSpace" parent="." instance=ExtResource("1_x06so")]
 

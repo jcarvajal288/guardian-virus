@@ -16,14 +16,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_hit(body: Node2D) -> void:
-	print('body hit')
 	if body is CharacterBody2D:
 		body.do_damage(DAMAGE)
 	queue_free()
 
 
 func _on_area_hit(area: Area2D) -> void:
-	print('area hit')
 	if area is Hurtbox:
 		area.register_hit(DAMAGE)
 		queue_free()

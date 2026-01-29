@@ -47,7 +47,7 @@ func shoot() -> void:
 		var shot = SHOT_1.instantiate()
 		shot.global_position = global_position
 		shot.global_position.y -= 8.0
-		get_tree().root.add_child(shot)
+		Global.add_node_to_level.emit(shot)
 		Sounds.play_sound.emit(Sounds.SoundEffect.PLAYER_SHOT, global_position)
 		can_shoot = false
 

@@ -21,4 +21,4 @@ func start_wave() -> void:
 			Global.rng.randf_range(tl.y, br.y),
 		)
 		explosion.global_position = pos
-		get_tree().root.add_child(explosion)
+		Global.add_node_to_level.emit(explosion)

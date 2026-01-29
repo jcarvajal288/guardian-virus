@@ -28,6 +28,7 @@ signal game_over
 signal player_health_changed
 signal reset
 signal bind_camera(rect: Rect2)
+signal add_node_to_level(node: Node2D)
 @warning_ignore_restore("unused_signal")
 
 
