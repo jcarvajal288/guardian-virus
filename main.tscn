@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cevmhwburofnj"]
+[gd_scene load_steps=6 format=3 uid="uid://cevmhwburofnj"]
 
 [ext_resource type="Script" uid="uid://lvqoedsmjxkn" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dpxthe7r4afam" path="res://Surface/Levels/TestLevel/TestLevel.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://djhp2w3nm3qqk" path="res://UI/GameOverScreen.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dxucbx86pi6rn" path="res://Assets/Sounds/SoundManager/SoundManager.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://odae08ihwgt0" path="res://UI/StatusBar/StatusBar.tscn" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dahyonuug207n" path="res://Surface/Components/SurfaceCamera/SurfaceCamera.tscn" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://cymlp6itmc4yd" path="res://UI/GameWindow/GameWindow.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -14,18 +13,4 @@ game_over_scene = ExtResource("3_h2yge")
 
 [node name="SoundManager" parent="." instance=ExtResource("4_1bvp3")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/separation = 0
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="SubViewport" type="SubViewport" parent="VBoxContainer/SubViewportContainer"]
-canvas_item_default_texture_filter = 0
-size = Vector2i(160, 128)
-
-[node name="SurfaceCamera" parent="VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("6_272bh")]
-
-[node name="CanvasLayer" parent="VBoxContainer" instance=ExtResource("6_7mycd")]
+[node name="GameWindow" parent="." instance=ExtResource("5_lquwl")]

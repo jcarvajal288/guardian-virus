@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cymlp6itmc4yd"]
+
+[ext_resource type="PackedScene" uid="uid://dn1mwoj2saqvm" path="res://Surface/SurfaceGameview.tscn" id="1_630ri"]
+[ext_resource type="PackedScene" uid="uid://odae08ihwgt0" path="res://UI/StatusBar/StatusBar.tscn" id="2_idrcf"]
+
+[node name="GameWindow" type="VBoxContainer"]
+offset_right = 160.0
+offset_bottom = 128.0
+theme_override_constants/separation = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 2
+
+[node name="SurfaceGameview" parent="SubViewportContainer" instance=ExtResource("1_630ri")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_idrcf")]
