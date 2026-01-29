@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs38ah8swkwmh"]
+[gd_scene load_steps=11 format=3 uid="uid://cs38ah8swkwmh"]
 
 [ext_resource type="Texture2D" uid="uid://cp8pyhpqxvfv" path="res://Shmup/Actors/Spider/_art/spider.png" id="1_cue1s"]
 [ext_resource type="Script" uid="uid://n5lrusg5fmqd" path="res://Shmup/Actors/Spider/spider.gd" id="1_eyx8a"]
+[ext_resource type="PackedScene" uid="uid://bn3mvtsoa3g3n" path="res://Common/Actors/Components/Hitbox/Hitbox.tscn" id="3_jllni"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tyr8e"]
 atlas = ExtResource("1_cue1s")
@@ -42,9 +43,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_lsb0o"]
 radius = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_w5gi2"]
+radius = 3.0
+
 [node name="Spider" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 0
 script = ExtResource("1_eyx8a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -55,3 +59,11 @@ frame_progress = 0.95860916
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lsb0o")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_jllni")]
+collision_layer = 0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_w5gi2")
+
+[editable path="Hitbox"]

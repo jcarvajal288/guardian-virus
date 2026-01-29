@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_hit(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		body.do_damage(DAMAGE)
+		body.take_damage(DAMAGE)
 	queue_free()
 
 

@@ -9,6 +9,6 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func do_damage(_dmg: int) -> void:
+func take_damage(_dmg: int) -> void:
 	on_death.emit()
 	queue_free()
