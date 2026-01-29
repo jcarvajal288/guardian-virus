@@ -62,6 +62,7 @@ shape = SubResource("CircleShape2D_lsb0o")
 
 [node name="Hitbox" parent="." instance=ExtResource("3_jllni")]
 collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_w5gi2")

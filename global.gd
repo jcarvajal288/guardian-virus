@@ -13,6 +13,7 @@ enum CollisionLayer {
 	ENEMY = 2,
 	BULLET = 3,
 	SHOT = 4,
+	PLAYER_HITBOX = 5,
 }
 
 enum RenderOrder {

@@ -52,7 +52,7 @@ start={
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="bullet"
 2d_physics/layer_4="shot"
-2d_physics/layer_5="wall"
+2d_physics/layer_5="player_hitbox"
 
 [rendering]
 

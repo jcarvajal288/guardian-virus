@@ -34,6 +34,7 @@ autoplay = "default"
 frame_progress = 0.54041725
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_4rfch")]
+collision_layer = 16
 collision_mask = 6
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
