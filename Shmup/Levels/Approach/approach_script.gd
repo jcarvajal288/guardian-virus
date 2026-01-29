@@ -6,13 +6,27 @@ const SPAWN_TOP_MIDDLE = Vector2(80, -20)
 const SPAWN_TOP_HALF_RIGHT = Vector2(115, -20)
 const SPAWN_TOP_RIGHT = Vector2(150.0, -20)
 
+const SPAWN_LEFT_TOP = Vector2(-20, 10.0)
+const SPAWN_LEFT_HALF_TOP = Vector2(-20, 27.0)
+const SPAWN_LEFT_MIDDLE = Vector2(-20, 64.0)
+const SPAWN_LEFT_HALF_BOTTOM = Vector2(-20, 86.0)
+const SPAWN_LEFT_BOTTOM = Vector2(-20, 108.0)
+
+const SPAWN_RIGHT_TOP = Vector2(180, 10.0)
+const SPAWN_RIGHT_HALF_TOP = Vector2(180, 27.0)
+const SPAWN_RIGHT_MIDDLE = Vector2(180, 64.0)
+const SPAWN_RIGHT_HALF_BOTTOM = Vector2(180, 86.0)
+const SPAWN_RIGHT_BOTTOM = Vector2(180, 108.0)
+
 const MISSILE: PackedScene = preload("res://Shmup/Actors/Missile/Missile.tscn")
 const SPIDER: PackedScene = preload("res://Shmup/Actors/Spider/Spider.tscn")
 const BOSS: PackedScene = preload("res://Shmup/Actors/EyeBoss/EyeBoss.tscn")
 
+
 func _ready() -> void:
+	$MissileSpawnTimer.wait_time = 2.0
+	$BossTimer.wait_time = 60.0
 	$MissileSpawnTimer.timeout.connect(spawn_missile)
-	# $SpiderSpawnTimer.timeout.connect(spawn_spider)
 	$BossTimer.timeout.connect(spawn_boss)
 	build_level()
 
@@ -33,8 +47,6 @@ func spawn_missile() -> void:
 
 
 func spawn_spider(spawn: Vector2) -> void:
-	# var spawns = [SPAWN_TOP_LEFT, SPAWN_TOP_RIGHT]
-	# var spawn = Global.rng.randi_range(0, spawns.size() - 1)
 	var spider = SPIDER.instantiate()
 
 	var move_pattern = MovementPatterns.STRAIGHT_AT_PLAYER.instantiate()
@@ -49,7 +61,6 @@ func spawn_spider(spawn: Vector2) -> void:
 	bullet_pattern.repeat_time = Global.INFINITE
 	bullet_pattern.damage = GameStats.SPIDER_DAMAGE
 
-	# spider.global_position = spawns[spawn]
 	spider.global_position = spawn
 	spider.add_child(move_pattern)
 	spider.add_child(bullet_pattern)
@@ -58,7 +69,6 @@ func spawn_spider(spawn: Vector2) -> void:
 
 func spawn_boss() -> void:
 	$MissileSpawnTimer.stop()
-	$SpiderSpawnTimer.stop()
 	await Global.wait_for_sec(3.0)
 	var boss = BOSS.instantiate()
 	boss.global_position = Vector2(80, -16)
@@ -72,6 +82,12 @@ func spawn_spider_line(spawn_position, amount, delay) -> void:
 
 
 func build_level() -> void:
+	await Global.wait_for_sec(4.0)
+	spawn_spider(SPAWN_LEFT_TOP)
+	await Global.wait_for_sec(1.0)
+	spawn_spider(SPAWN_RIGHT_TOP)
+	await Global.wait_for_sec(1.0)
+	spawn_spider(SPAWN_TOP_MIDDLE)
 	await Global.wait_for_sec(2.0)
 	spawn_spider_line(SPAWN_TOP_LEFT, 5, 0.25)
 	await Global.wait_for_sec(2.0)
