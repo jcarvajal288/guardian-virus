@@ -8,7 +8,7 @@ var current_level: Node2D
 
 func _ready() -> void:
 	current_level = first_level_scene.instantiate()
-	add_child(current_level)
+	$VBoxContainer/SubViewportContainer/SubViewport.add_child(current_level)
 	Global.game_over.connect(_on_game_over)
 	Global.reset.connect(_on_reset)
 
@@ -26,3 +26,4 @@ func _on_reset() -> void:
 	var first_level = first_level_scene.instantiate()
 	add_child(first_level)
 	current_level = first_level
+
