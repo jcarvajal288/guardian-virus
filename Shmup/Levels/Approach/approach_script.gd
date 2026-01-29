@@ -12,8 +12,9 @@ const BOSS: PackedScene = preload("res://Shmup/Actors/EyeBoss/EyeBoss.tscn")
 
 func _ready() -> void:
 	$MissileSpawnTimer.timeout.connect(spawn_missile)
-	$SpiderSpawnTimer.timeout.connect(spawn_spider)
+	# $SpiderSpawnTimer.timeout.connect(spawn_spider)
 	$BossTimer.timeout.connect(spawn_boss)
+	build_level()
 
 
 func spawn_missile() -> void:
@@ -31,9 +32,9 @@ func spawn_missile() -> void:
 	get_parent().add_child.call_deferred(missile)
 
 
-func spawn_spider() -> void:
-	var spawns = [SPAWN_TOP_LEFT, SPAWN_TOP_RIGHT]
-	var spawn = Global.rng.randi_range(0, spawns.size() - 1)
+func spawn_spider(spawn: Vector2) -> void:
+	# var spawns = [SPAWN_TOP_LEFT, SPAWN_TOP_RIGHT]
+	# var spawn = Global.rng.randi_range(0, spawns.size() - 1)
 	var spider = SPIDER.instantiate()
 
 	var move_pattern = MovementPatterns.STRAIGHT_AT_PLAYER.instantiate()
@@ -44,11 +45,12 @@ func spawn_spider() -> void:
 	bullet_pattern.bullet_type = Bullets.BALL_BULLET
 	bullet_pattern.speed = 75.0
 	bullet_pattern.direction = Global.TOWARDS_PLAYER
-	bullet_pattern.startup_time = 0.5
-	bullet_pattern.repeat_time = 1.0
+	bullet_pattern.startup_time = Global.rng.randf_range(0.5, 1.5)
+	bullet_pattern.repeat_time = Global.INFINITE
 	bullet_pattern.damage = GameStats.SPIDER_DAMAGE
 
-	spider.global_position = spawns[spawn]
+	# spider.global_position = spawns[spawn]
+	spider.global_position = spawn
 	spider.add_child(move_pattern)
 	spider.add_child(bullet_pattern)
 	get_parent().add_child.call_deferred(spider)
@@ -61,3 +63,16 @@ func spawn_boss() -> void:
 	var boss = BOSS.instantiate()
 	boss.global_position = Vector2(80, -16)
 	get_parent().add_child.call_deferred(boss)
+
+
+func spawn_spider_line(spawn_position, amount, delay) -> void:
+	for i in amount:
+		spawn_spider(spawn_position)
+		await Global.wait_for_sec(delay)
+
+
+func build_level() -> void:
+	await Global.wait_for_sec(2.0)
+	spawn_spider_line(SPAWN_TOP_LEFT, 5, 0.25)
+	await Global.wait_for_sec(2.0)
+	spawn_spider_line(SPAWN_TOP_RIGHT, 5, 0.25)
