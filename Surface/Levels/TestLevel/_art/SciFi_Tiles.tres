@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b1goh2836gyag"]
+[gd_resource type="TileSet" format=3 uid="uid://b1goh2836gyag"]
 
 [ext_resource type="Texture2D" uid="uid://c8ramidoryint" path="res://Surface/Levels/TestLevel/_art/SciFi_Tiles.png" id="1_115k0"]
 
