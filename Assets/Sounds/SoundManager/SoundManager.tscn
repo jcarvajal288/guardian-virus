@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxucbx86pi6rn"]
+[gd_scene format=3 uid="uid://dxucbx86pi6rn"]
 
 [ext_resource type="Script" uid="uid://cm5is5riwyu8b" path="res://Assets/Sounds/SoundManager/sound_manager.gd" id="1_p0sh0"]
 [ext_resource type="AudioStream" uid="uid://dcqnih4d3ny8n" path="res://Assets/Sounds/Explosions/boss_explosion.wav" id="2_i3eyx"]
@@ -9,45 +9,49 @@
 [ext_resource type="AudioStream" uid="uid://doxafp3ifiaby" path="res://Assets/Sounds/Explosions/small_explosion.wav" id="7_accqd"]
 [ext_resource type="AudioStream" uid="uid://chcjb0q4mig7o" path="res://Assets/Sounds/Explosions/small_explosion_2.wav" id="8_518f0"]
 [ext_resource type="AudioStream" uid="uid://bemwxx1kqw70r" path="res://Assets/Sounds/Hits/boss_hit.wav" id="9_0yhhh"]
+[ext_resource type="AudioStream" uid="uid://cy1c2ljexyhtj" path="res://Assets/Sounds/Explosions/eel_explosion.wav" id="9_i3eyx"]
 [ext_resource type="AudioStream" uid="uid://du4x8kl4mgrva" path="res://Assets/Sounds/Hits/player_shield.wav" id="10_lefc1"]
 [ext_resource type="AudioStream" uid="uid://bkpt6k0lrogh8" path="res://Assets/Sounds/Shots/player_shoot.wav" id="11_fkx11"]
 
-[node name="SoundManager" type="Node"]
+[node name="SoundManager" type="Node" unique_id=1470937668]
 script = ExtResource("1_p0sh0")
 
-[node name="Explosions" type="Node" parent="."]
+[node name="Explosions" type="Node" parent="." unique_id=1484357695]
 
-[node name="BossExplosion1" type="AudioStreamPlayer2D" parent="Explosions"]
+[node name="BossExplosion1" type="AudioStreamPlayer2D" parent="Explosions" unique_id=1654427319]
 stream = ExtResource("2_i3eyx")
 
-[node name="BossExplosion2" type="AudioStreamPlayer2D" parent="Explosions"]
+[node name="BossExplosion2" type="AudioStreamPlayer2D" parent="Explosions" unique_id=2002077662]
 stream = ExtResource("3_lc4q6")
 
-[node name="LongBossExplosion" type="AudioStreamPlayer2D" parent="Explosions"]
+[node name="LongBossExplosion" type="AudioStreamPlayer2D" parent="Explosions" unique_id=1468216825]
 stream = ExtResource("4_x5q8l")
 
-[node name="LowExplosion" type="AudioStreamPlayer2D" parent="Explosions"]
+[node name="LowExplosion" type="AudioStreamPlayer2D" parent="Explosions" unique_id=1154073430]
 stream = ExtResource("5_1sal8")
 
-[node name="PlayerExplosion" type="AudioStreamPlayer2D" parent="Explosions"]
+[node name="PlayerExplosion" type="AudioStreamPlayer2D" parent="Explosions" unique_id=998064671]
 stream = ExtResource("6_78otj")
 
-[node name="SmallExplosion1" type="AudioStreamPlayer2D" parent="Explosions"]
+[node name="SmallExplosion1" type="AudioStreamPlayer2D" parent="Explosions" unique_id=964277032]
 stream = ExtResource("7_accqd")
 
-[node name="SmallExplosion2" type="AudioStreamPlayer2D" parent="Explosions"]
+[node name="SmallExplosion2" type="AudioStreamPlayer2D" parent="Explosions" unique_id=1971797431]
 stream = ExtResource("8_518f0")
 
-[node name="Hits" type="Node" parent="."]
+[node name="EelExplosion" type="AudioStreamPlayer2D" parent="Explosions" unique_id=850828579]
+stream = ExtResource("9_i3eyx")
 
-[node name="BossHit" type="AudioStreamPlayer2D" parent="Hits"]
+[node name="Hits" type="Node" parent="." unique_id=1273362706]
+
+[node name="BossHit" type="AudioStreamPlayer2D" parent="Hits" unique_id=1924755709]
 stream = ExtResource("9_0yhhh")
 
-[node name="PlayerShield" type="AudioStreamPlayer2D" parent="Hits"]
+[node name="PlayerShield" type="AudioStreamPlayer2D" parent="Hits" unique_id=1441194696]
 stream = ExtResource("10_lefc1")
 
-[node name="Shots" type="Node" parent="."]
+[node name="Shots" type="Node" parent="." unique_id=81932440]
 
-[node name="PlayerShot" type="AudioStreamPlayer2D" parent="Shots"]
+[node name="PlayerShot" type="AudioStreamPlayer2D" parent="Shots" unique_id=797749786]
 stream = ExtResource("11_fkx11")
 volume_db = -11.0

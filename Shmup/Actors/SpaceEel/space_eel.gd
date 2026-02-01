@@ -8,8 +8,8 @@ func _ready() -> void:
 
 
 func _on_death() -> void:
-	var explosion = Effects.EXPLOSION_8x8.instantiate()
+	var explosion = Effects.EXPLOSION_32x32.instantiate()
 	explosion.global_position = global_position
 	Global.add_node_to_level.emit(explosion)
-	Sounds.play_sound.emit(Sounds.SoundEffect.SMALL_EXPLOSION_1, global_position)
+	Sounds.play_sound.emit(Sounds.SoundEffect.EEL_EXPLOSION, global_position)
 	queue_free()

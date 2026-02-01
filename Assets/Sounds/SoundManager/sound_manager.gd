@@ -27,6 +27,8 @@ func _on_play_sound(sound_effect: Sounds.SoundEffect, sound_position: Vector2) -
 		play_sound_at_position($Explosions/SmallExplosion1, sound_position)
 	elif sound_effect == Sounds.SoundEffect.SMALL_EXPLOSION_2:
 		play_sound_at_position($Explosions/SmallExplosion2, sound_position)
+	elif sound_effect == Sounds.SoundEffect.EEL_EXPLOSION:
+		play_sound_at_position($Explosions/EelExplosion, sound_position)
 	elif sound_effect == Sounds.SoundEffect.BOSS_HIT:
 		play_sound_at_position($Hits/BossHit, sound_position)
 	elif sound_effect == Sounds.SoundEffect.PLAYER_SHIELD:
