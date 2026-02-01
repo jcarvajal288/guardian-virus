@@ -5,9 +5,6 @@ signal on_death
 func _init() -> void:
 	z_index = Global.RenderOrder.ENEMY
 
-func _physics_process(_delta: float) -> void:
-	move_and_slide()
-
 
 func take_damage(_dmg: int) -> void:
 	on_death.emit()

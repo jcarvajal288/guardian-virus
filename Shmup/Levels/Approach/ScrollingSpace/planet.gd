@@ -10,7 +10,6 @@ var elapsed_time = 0.0
 func _ready() -> void:
 	var distance = 144
 	time_to_move_a_pixel = TIME_TO_COMPLETE / distance	
-	print(time_to_move_a_pixel)
 
 
 func _process(delta: float) -> void:

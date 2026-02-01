@@ -16,3 +16,4 @@ func _physics_process(delta: float) -> void:
 	if Global.player.global_position.x < subject.global_position.x:
 		acceleration *= -1
 	subject.velocity.x += acceleration
+	subject.move_and_slide()

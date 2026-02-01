@@ -20,15 +20,17 @@ const SPAWN_RIGHT_BOTTOM = Vector2(180, 108.0)
 
 const MISSILE: PackedScene = preload("res://Shmup/Actors/Missile/Missile.tscn")
 const SPIDER: PackedScene = preload("res://Shmup/Actors/Spider/Spider.tscn")
+const EEL: PackedScene = preload("res://Shmup/Actors/SpaceEel/SpaceEel.tscn")
 const BOSS: PackedScene = preload("res://Shmup/Actors/EyeBoss/EyeBoss.tscn")
 
 
 func _ready() -> void:
 	$MissileSpawnTimer.wait_time = 2.0
 	$BossTimer.wait_time = 60.0
-	$MissileSpawnTimer.timeout.connect(spawn_missile)
-	$BossTimer.timeout.connect(spawn_boss)
-	build_level()
+	# $MissileSpawnTimer.timeout.connect(spawn_missile)
+	# $BossTimer.timeout.connect(spawn_boss)
+	spawn_eel(SPAWN_TOP_MIDDLE)
+	# build_level()
 
 
 func spawn_missile() -> void:
@@ -65,6 +67,14 @@ func spawn_spider(spawn: Vector2) -> void:
 	spider.add_child(move_pattern)
 	spider.add_child(bullet_pattern)
 	get_parent().add_child.call_deferred(spider)
+
+
+func spawn_eel(spawn: Vector2) -> void:
+	print("spawning eel")
+	var eel = EEL.instantiate()
+	eel.global_position = spawn
+	get_parent().add_child.call_deferred(eel)
+	#Global.add_node_to_level.emit(eel)
 
 
 func spawn_boss() -> void:
