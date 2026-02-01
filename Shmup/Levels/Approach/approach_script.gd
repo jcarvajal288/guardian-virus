@@ -70,11 +70,9 @@ func spawn_spider(spawn: Vector2) -> void:
 
 
 func spawn_eel(spawn: Vector2) -> void:
-	print("spawning eel")
 	var eel = EEL.instantiate()
 	eel.global_position = spawn
 	get_parent().add_child.call_deferred(eel)
-	#Global.add_node_to_level.emit(eel)
 
 
 func spawn_boss() -> void:

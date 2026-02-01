@@ -2,7 +2,8 @@ extends Enemy
 
 
 func _ready() -> void:
-	on_death.connect(_on_death)
+	super()
+	$Health.on_death.connect(_on_death)
 
 
 func _on_death() -> void:

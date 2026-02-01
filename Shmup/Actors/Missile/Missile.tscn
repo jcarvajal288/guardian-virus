@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba7vffmd7s3jo"]
+[gd_scene format=3 uid="uid://ba7vffmd7s3jo"]
 
 [ext_resource type="Texture2D" uid="uid://cwlrncfft6kag" path="res://Shmup/Actors/Missile/_art/missile.png" id="1_f72ud"]
 [ext_resource type="Script" uid="uid://v3yqu4iimuog" path="res://Shmup/Actors/Missile/missile.gd" id="1_ukxhg"]
 [ext_resource type="PackedScene" uid="uid://bn3mvtsoa3g3n" path="res://Common/Actors/Components/Hitbox/Hitbox.tscn" id="3_ukxhg"]
+[ext_resource type="PackedScene" uid="uid://dqrd5e3alvuxr" path="res://Common/Actors/Components/Health/Health.tscn" id="4_sukqb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40kgx"]
 atlas = ExtResource("1_f72ud")
@@ -48,26 +49,28 @@ height = 10.0
 radius = 4.0
 height = 10.0
 
-[node name="Missile" type="CharacterBody2D"]
+[node name="Missile" type="CharacterBody2D" unique_id=864843034]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_ukxhg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=946030894]
 sprite_frames = SubResource("SpriteFrames_rukfl")
 autoplay = "default"
 frame_progress = 0.26358187
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2121125928]
 shape = SubResource("CapsuleShape2D_j7frp")
 debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
 
-[node name="Hitbox" parent="." instance=ExtResource("3_ukxhg")]
+[node name="Hitbox" parent="." unique_id=1705840663 instance=ExtResource("3_ukxhg")]
 collision_layer = 2
-collision_mask = 16
 
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
+[node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=1798230965]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_bsf76")
+
+[node name="Health" parent="." unique_id=1239000959 instance=ExtResource("4_sukqb")]
+max_health = 1.0
 
 [editable path="Hitbox"]

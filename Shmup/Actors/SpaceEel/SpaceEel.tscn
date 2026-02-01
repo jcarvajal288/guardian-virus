@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://x8xlvefbift7" path="res://Common/Actors/Components/MovementPatterns/MoveStraight/MoveStraight.tscn" id="4_44x8n"]
 [ext_resource type="PackedScene" uid="uid://bdnhmljf38fav" path="res://Common/Bullets/Ball/BallBullet.tscn" id="5_xwaqd"]
 [ext_resource type="PackedScene" uid="uid://bn3mvtsoa3g3n" path="res://Common/Actors/Components/Hitbox/Hitbox.tscn" id="7_xwaqd"]
+[ext_resource type="PackedScene" uid="uid://dqrd5e3alvuxr" path="res://Common/Actors/Components/Health/Health.tscn" id="8_36g5y"]
+[ext_resource type="PackedScene" uid="uid://csdc4kco3ncf5" path="res://Common/Actors/Components/Hurtbox/Hurtbox.tscn" id="9_f0eou"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t3mx6"]
 atlas = ExtResource("1_fnsrs")
@@ -76,6 +78,9 @@ radius = 6.0
 radius = 4.0
 height = 28.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f0eou"]
+radius = 6.0
+
 [node name="SpaceEel" type="CharacterBody2D" unique_id=816796638]
 collision_layer = 2
 collision_mask = 0
@@ -106,10 +111,19 @@ subject = NodePath("..")
 velocity = Vector2(0, 10)
 
 [node name="Hitbox" parent="." unique_id=734526914 instance=ExtResource("7_xwaqd")]
-collision_layer = 0
-collision_mask = 16
 
 [node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=1798230965]
 shape = SubResource("CapsuleShape2D_36g5y")
 
+[node name="Health" parent="." unique_id=370871115 instance=ExtResource("8_36g5y")]
+max_health = 5.0
+
+[node name="Hurtbox" parent="." unique_id=57202968 instance=ExtResource("9_f0eou")]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CapsuleShape2D_f0eou")
+
 [editable path="Hitbox"]
+[editable path="Hurtbox"]

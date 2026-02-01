@@ -12,9 +12,13 @@ func set_health(new_health: float) -> void:
 	current_health = max_health
 
 
-func _on_hit(damage: float) -> void:
+func take_damage(damage: float) -> void:
 	current_health -= damage
 	if current_health <= 0:
 		current_health = 0
 		on_death.emit()
 	health_changed.emit(current_health, max_health)
+
+
+func _on_hit(damage: float) -> void:
+	take_damage(damage)

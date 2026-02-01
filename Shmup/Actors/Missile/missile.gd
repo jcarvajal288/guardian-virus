@@ -3,7 +3,7 @@ extends Enemy
 func _ready() -> void:
 	$Hitbox.on_hitbox_triggered.connect(_on_hitbox_triggered)
 	$Hitbox.damage = GameStats.MISSILE_DAMAGE
-	on_death.connect(_on_death)
+	$Health.on_death.connect(_on_death)
 
 
 func _on_hitbox_triggered() -> void:
