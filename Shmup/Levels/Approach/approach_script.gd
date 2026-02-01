@@ -27,10 +27,10 @@ const BOSS: PackedScene = preload("res://Shmup/Actors/EyeBoss/EyeBoss.tscn")
 func _ready() -> void:
 	$MissileSpawnTimer.wait_time = 2.0
 	$BossTimer.wait_time = 60.0
-	# $MissileSpawnTimer.timeout.connect(spawn_missile)
-	# $BossTimer.timeout.connect(spawn_boss)
+	$MissileSpawnTimer.timeout.connect(spawn_missile)
+	$BossTimer.timeout.connect(spawn_boss)
 	spawn_eel(SPAWN_TOP_MIDDLE)
-	# build_level()
+	build_level()
 
 
 func spawn_missile() -> void:

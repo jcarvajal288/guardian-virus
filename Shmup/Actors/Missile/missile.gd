@@ -1,6 +1,7 @@
 extends Enemy
 
 func _ready() -> void:
+	super()
 	$Hitbox.on_hitbox_triggered.connect(_on_hitbox_triggered)
 	$Hitbox.damage = GameStats.MISSILE_DAMAGE
 	$Health.on_death.connect(_on_death)
