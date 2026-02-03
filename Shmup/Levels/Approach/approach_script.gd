@@ -29,7 +29,6 @@ func _ready() -> void:
 	$BossTimer.wait_time = 60.0
 	$MissileSpawnTimer.timeout.connect(spawn_missile)
 	$BossTimer.timeout.connect(spawn_boss)
-	spawn_eel(SPAWN_TOP_MIDDLE)
 	build_level()
 
 
@@ -48,12 +47,12 @@ func spawn_missile() -> void:
 	get_parent().add_child.call_deferred(missile)
 
 
-func spawn_spider(spawn: Vector2) -> void:
+func spawn_spider(spawn: Vector2, direction = Global.TOWARDS_PLAYER) -> void:
 	var spider = SPIDER.instantiate()
 
-	var move_pattern = MovementPatterns.STRAIGHT_AT_PLAYER.instantiate()
+	var move_pattern = MovementPatterns.MOVE_STRAIGHT.instantiate()
 	move_pattern.subject = spider
-	move_pattern.speed = 50.0
+	move_pattern.velocity = direction * GameStats.SPIDER_SPEED
 
 	var bullet_pattern = BulletPatterns.SINGLE_SHOT.instantiate()
 	bullet_pattern.bullet_type = Bullets.BALL_BULLET
@@ -83,9 +82,9 @@ func spawn_boss() -> void:
 	get_parent().add_child.call_deferred(boss)
 
 
-func spawn_spider_line(spawn_position, amount, delay) -> void:
+func spawn_spider_line(spawn_position, amount, delay, direction = Global.TOWARDS_PLAYER) -> void:
 	for i in amount:
-		spawn_spider(spawn_position)
+		spawn_spider(spawn_position, direction)
 		await Global.wait_for_sec(delay)
 
 
@@ -97,6 +96,23 @@ func build_level() -> void:
 	await Global.wait_for_sec(1.0)
 	spawn_spider(SPAWN_TOP_MIDDLE)
 	await Global.wait_for_sec(2.0)
-	spawn_spider_line(SPAWN_TOP_LEFT, 5, 0.25)
+
+	spawn_spider_line(SPAWN_TOP_LEFT, 2, 0.5)
+	spawn_spider_line(SPAWN_TOP_RIGHT, 2, 0.5)
+	await Global.wait_for_sec(3.0)
+	spawn_spider_line(SPAWN_LEFT_TOP, 2, 0.5)
+	spawn_spider_line(SPAWN_RIGHT_TOP, 2, 0.5)
+	spawn_eel(SPAWN_TOP_MIDDLE)
+	await Global.wait_for_sec(3.0)
+
+	spawn_spider(SPAWN_TOP_LEFT)
+	spawn_spider(SPAWN_TOP_RIGHT)
+	spawn_spider(SPAWN_LEFT_HALF_BOTTOM)
+	spawn_spider(SPAWN_RIGHT_HALF_BOTTOM)
+	await Global.wait_for_sec(3.0)
+
+	spawn_eel(SPAWN_TOP_HALF_LEFT)
+	spawn_eel(SPAWN_TOP_HALF_RIGHT)
 	await Global.wait_for_sec(2.0)
-	spawn_spider_line(SPAWN_TOP_RIGHT, 5, 0.25)
+	spawn_spider_line(SPAWN_TOP_LEFT, 5, 0.5, Vector2.DOWN)
+	spawn_spider_line(SPAWN_TOP_RIGHT, 5, 0.5, Vector2.DOWN)
