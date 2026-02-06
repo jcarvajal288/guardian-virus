@@ -39,6 +39,10 @@ func get_movement_vector() -> Vector2:
 func move() -> void:
 	var movement_vector = get_movement_vector()
 	velocity = movement_vector * SPEED
+	global_position = Vector2(
+		snapped(global_position.x, 1.0),
+		snapped(global_position.y, 1.0)
+	)
 	move_and_slide()
 
 
