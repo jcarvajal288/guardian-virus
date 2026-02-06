@@ -21,15 +21,17 @@ const SPAWN_RIGHT_BOTTOM = Vector2(180, 108.0)
 const MISSILE: PackedScene = preload("res://Shmup/Actors/Missile/Missile.tscn")
 const SPIDER: PackedScene = preload("res://Shmup/Actors/Spider/Spider.tscn")
 const EEL: PackedScene = preload("res://Shmup/Actors/SpaceEel/SpaceEel.tscn")
+const BIG_SPIDER: PackedScene = preload("res://Shmup/Actors/BigSpider/BigSpider.tscn")
 const BOSS: PackedScene = preload("res://Shmup/Actors/EyeBoss/EyeBoss.tscn")
 
 
 func _ready() -> void:
-	$MissileSpawnTimer.wait_time = 2.0
-	$BossTimer.wait_time = 60.0
-	$MissileSpawnTimer.timeout.connect(spawn_missile)
-	$BossTimer.timeout.connect(spawn_boss)
-	build_level()
+	# $MissileSpawnTimer.wait_time = 2.0
+	# $BossTimer.wait_time = 60.0
+	# $MissileSpawnTimer.timeout.connect(spawn_missile)
+	# $BossTimer.timeout.connect(spawn_boss)
+	# build_level()
+	spawn_big_spider(SPAWN_RIGHT_HALF_BOTTOM, Vector2(20, 20), Vector2(140, 20))
 
 
 func spawn_missile() -> void:
@@ -74,6 +76,19 @@ func spawn_eel(spawn: Vector2) -> void:
 	get_parent().add_child.call_deferred(eel)
 
 
+func spawn_big_spider(spawn: Vector2, pointA: Vector2, pointB: Vector2) -> void:
+	var spider = BIG_SPIDER.instantiate()
+	spider.global_position = spawn
+
+	var move_pattern = MovementPatterns.MOVE_BETWEEN_POINTS.instantiate()
+	move_pattern.subject = spider
+	move_pattern.speed = GameStats.BIG_SPIDER_SPEED
+	move_pattern.pointA = pointA
+	move_pattern.pointB = pointB
+	spider.add_child(move_pattern)
+	get_parent().add_child.call_deferred(spider)
+
+
 func spawn_boss() -> void:
 	$MissileSpawnTimer.stop()
 	await Global.wait_for_sec(3.0)
@@ -95,7 +110,7 @@ func build_level() -> void:
 	spawn_spider(SPAWN_RIGHT_TOP)
 	await Global.wait_for_sec(1.0)
 	spawn_spider(SPAWN_TOP_MIDDLE)
-	await Global.wait_for_sec(2.0)
+	await Global.wait_for_sec(3.0)
 
 	spawn_spider_line(SPAWN_TOP_LEFT, 2, 0.5)
 	spawn_spider_line(SPAWN_TOP_RIGHT, 2, 0.5)
@@ -103,16 +118,16 @@ func build_level() -> void:
 	spawn_spider_line(SPAWN_LEFT_TOP, 2, 0.5)
 	spawn_spider_line(SPAWN_RIGHT_TOP, 2, 0.5)
 	spawn_eel(SPAWN_TOP_MIDDLE)
-	await Global.wait_for_sec(3.0)
+	await Global.wait_for_sec(4.0)
 
 	spawn_spider(SPAWN_TOP_LEFT)
 	spawn_spider(SPAWN_TOP_RIGHT)
 	spawn_spider(SPAWN_LEFT_HALF_BOTTOM)
 	spawn_spider(SPAWN_RIGHT_HALF_BOTTOM)
-	await Global.wait_for_sec(3.0)
+	await Global.wait_for_sec(4.0)
 
 	spawn_eel(SPAWN_TOP_HALF_LEFT)
 	spawn_eel(SPAWN_TOP_HALF_RIGHT)
-	await Global.wait_for_sec(2.0)
+	await Global.wait_for_sec(3.0)
 	spawn_spider_line(SPAWN_TOP_LEFT, 5, 0.5, Vector2.DOWN)
 	spawn_spider_line(SPAWN_TOP_RIGHT, 5, 0.5, Vector2.DOWN)

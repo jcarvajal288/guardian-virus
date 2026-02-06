@@ -14,3 +14,5 @@ const MISSILE_DAMAGE = 1.5
 
 const SPIDER_DAMAGE = 1.0
 const SPIDER_SPEED = 50
+
+const BIG_SPIDER_SPEED = 40
