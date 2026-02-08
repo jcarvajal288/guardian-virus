@@ -1,11 +1,14 @@
 extends Bullet
 
 const TURN_RATE = 0.5
+const LIFETIME = 6.0
 
 
 func _ready() -> void:
 	speed = 40
 	direction = Global.TOWARDS_PLAYER
+	$LifetimeTimer.timeout.connect(queue_free)
+	$LifetimeTimer.start(LIFETIME)
 	super()
 
 
