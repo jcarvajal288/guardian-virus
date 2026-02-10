@@ -1,16 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cymlp6itmc4yd"]
+[gd_scene format=3 uid="uid://cymlp6itmc4yd"]
 
-[ext_resource type="PackedScene" uid="uid://ctbjh0jr3c6lo" path="res://Shmup/ShmupGameview.tscn" id="1_630ri"]
+[ext_resource type="Script" uid="uid://bg5bb6tawxi1m" path="res://UI/GameWindow/game_window.gd" id="1_idrcf"]
 [ext_resource type="PackedScene" uid="uid://odae08ihwgt0" path="res://UI/StatusBar/StatusBar.tscn" id="2_idrcf"]
 
-[node name="GameWindow" type="VBoxContainer"]
+[node name="GameWindow" type="VBoxContainer" unique_id=1880968430]
 offset_right = 160.0
 offset_bottom = 128.0
 theme_override_constants/separation = 0
+script = ExtResource("1_idrcf")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1735868390]
 layout_mode = 2
 
-[node name="ShmupGameview" parent="SubViewportContainer" instance=ExtResource("1_630ri")]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=572847619]
+handle_input_locally = false
+render_target_update_mode = 4
 
-[node name="CanvasLayer" parent="." instance=ExtResource("2_idrcf")]
+[node name="StatusBar" parent="." unique_id=1567623357 instance=ExtResource("2_idrcf")]
