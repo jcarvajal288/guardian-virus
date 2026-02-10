@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://u2qm7gv6w7bd"]
+[gd_scene format=3 uid="uid://u2qm7gv6w7bd"]
 
 [ext_resource type="Script" uid="uid://e38na0cab66d" path="res://Shmup/Actors/EyeBoss/energy_turret.gd" id="1_8080a"]
 [ext_resource type="Texture2D" uid="uid://bqqd1kkkkhsku" path="res://Shmup/Actors/EyeBoss/_art/energy_turret.png" id="1_wfni0"]
+[ext_resource type="PackedScene" uid="uid://csdc4kco3ncf5" path="res://Common/Actors/Components/Hurtbox/Hurtbox.tscn" id="3_u58u0"]
+[ext_resource type="PackedScene" uid="uid://dqrd5e3alvuxr" path="res://Common/Actors/Components/Health/Health.tscn" id="4_wfcev"]
 
 [sub_resource type="Animation" id="Animation_3jgq6"]
 length = 0.001
@@ -59,17 +61,28 @@ _data = {
 &"fire": SubResource("Animation_uivps")
 }
 
-[node name="EnergyTurret" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2mex"]
+size = Vector2(8, 8)
+
+[node name="EnergyTurret" type="Node2D" unique_id=802439564]
 script = ExtResource("1_8080a")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=32451413]
 texture = ExtResource("1_wfni0")
 hframes = 4
 vframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_rd2po")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2091382530]
+libraries/ = SubResource("AnimationLibrary_rd2po")
 
-[node name="ShotTimer" type="Timer" parent="."]
+[node name="ShotTimer" type="Timer" parent="." unique_id=1853624491]
+
+[node name="Hurtbox" parent="." unique_id=867860352 instance=ExtResource("3_u58u0")]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=719271502]
+shape = SubResource("RectangleShape2D_l2mex")
+
+[node name="Health" parent="." unique_id=176461458 instance=ExtResource("4_wfcev")]
+max_health = 5.0
+
+[editable path="Hurtbox"]

@@ -2,8 +2,10 @@ extends Node2D
 
 
 func _ready() -> void:
+	$Hurtbox.on_hit.connect($Health.take_damage)
 	$ShotTimer.timeout.connect(open_turret)
 	$AnimationPlayer.animation_finished.connect(_on_animation_finished)
+	$Health.on_death.connect(_on_death)
 	set_shot_timer()
 
 
@@ -31,3 +33,11 @@ func fire() -> void:
 	bullet.global_position = global_position
 	bullet.damage = GameStats.ENERGY_TURRET_DAMAGE
 	Global.add_node_to_level.emit(bullet)
+
+
+func _on_death() -> void:
+	var explosion = Effects.EXPLOSION_8x8.instantiate()
+	explosion.global_position = global_position
+	Global.add_node_to_level.emit(explosion)
+	Sounds.play_sound.emit(Sounds.SoundEffect.SMALL_EXPLOSION_1, global_position)
+	queue_free()
