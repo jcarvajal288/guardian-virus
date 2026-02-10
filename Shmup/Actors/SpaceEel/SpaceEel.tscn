@@ -108,7 +108,8 @@ shape = SubResource("CapsuleShape2D_5jyxs")
 
 [node name="MoveStraight" parent="." unique_id=1952140057 node_paths=PackedStringArray("subject") instance=ExtResource("4_44x8n")]
 subject = NodePath("..")
-velocity = Vector2(0, 10)
+speed = 10.0
+direction = Vector2(0, 1)
 
 [node name="Hitbox" parent="." unique_id=734526914 instance=ExtResource("7_xwaqd")]
 
@@ -119,10 +120,8 @@ shape = SubResource("CapsuleShape2D_36g5y")
 max_health = 5.0
 
 [node name="Hurtbox" parent="." unique_id=57202968 instance=ExtResource("9_f0eou")]
-collision_layer = 2
-collision_mask = 8
 
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+[node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=719271502]
 shape = SubResource("CapsuleShape2D_f0eou")
 
 [editable path="Hitbox"]

@@ -26,12 +26,11 @@ const BOSS: PackedScene = preload("res://Shmup/Actors/EyeBoss/EyeBoss.tscn")
 
 
 func _ready() -> void:
-	# $MissileSpawnTimer.wait_time = 2.0
-	# $BossTimer.wait_time = 60.0
-	# $MissileSpawnTimer.timeout.connect(spawn_missile)
-	# $BossTimer.timeout.connect(spawn_boss)
-	# build_level()
-	spawn_big_spider(SPAWN_RIGHT_HALF_BOTTOM, Vector2(20, 20), Vector2(140, 20))
+	$MissileSpawnTimer.wait_time = 2.0
+	$BossTimer.wait_time = 60.0
+	$MissileSpawnTimer.timeout.connect(spawn_missile)
+	$BossTimer.timeout.connect(spawn_boss)
+	build_level()
 
 
 func spawn_missile() -> void:
@@ -54,7 +53,8 @@ func spawn_spider(spawn: Vector2, direction = Global.TOWARDS_PLAYER) -> void:
 
 	var move_pattern = MovementPatterns.MOVE_STRAIGHT.instantiate()
 	move_pattern.subject = spider
-	move_pattern.velocity = direction * GameStats.SPIDER_SPEED
+	move_pattern.direction = direction
+	move_pattern.speed = GameStats.SPIDER_SPEED
 
 	var bullet_pattern = BulletPatterns.SINGLE_SHOT.instantiate()
 	bullet_pattern.bullet_type = Bullets.BALL_BULLET
@@ -131,3 +131,6 @@ func build_level() -> void:
 	await Global.wait_for_sec(3.0)
 	spawn_spider_line(SPAWN_TOP_LEFT, 5, 0.5, Vector2.DOWN)
 	spawn_spider_line(SPAWN_TOP_RIGHT, 5, 0.5, Vector2.DOWN)
+	await Global.wait_for_sec(5.0)
+
+	spawn_big_spider(SPAWN_RIGHT_HALF_BOTTOM, Vector2(20, 20), Vector2(140, 20))
