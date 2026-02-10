@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 func set_shot_timer() -> void:
-	var time = Global.rng.randf_range(1.0, 2.0)
+	var time = Global.rng.randf_range(3.0, 6.0)
 	$ShotTimer.start(time)
 
 
