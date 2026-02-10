@@ -17,4 +17,4 @@ func launch_missile() -> void:
 
 	missile.global_position = global_position
 	missile.add_child(move_pattern)
-	get_tree().root.add_child.call_deferred(missile)
+	Global.add_node_to_level.emit(missile)
