@@ -3,6 +3,7 @@ extends Enemy
 
 func _ready() -> void:
 	super()
+	$Health.set_health(GameStats.BIG_SPIDER_HEALTH)
 	$Health.on_death.connect(_on_death)
 	$ShotTimer.timeout.connect(fire)
 	$ShotTimer.start(3.0)

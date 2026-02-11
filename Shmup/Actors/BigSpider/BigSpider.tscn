@@ -147,7 +147,6 @@ position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_oyy5i")
 
 [node name="Health" parent="." unique_id=235087107 instance=ExtResource("5_4j6yc")]
-max_health = 15.0
 
 [node name="ShotTimer" type="Timer" parent="." unique_id=1485539707]
 
