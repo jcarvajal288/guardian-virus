@@ -13,7 +13,10 @@ func _ready() -> void:
 
 func _on_hit(_dmg: float) -> void:
 	var hit = Effects.EXPLOSION_8x8_2.instantiate()
-	hit.global_position = global_position
+	var size = $CollisionShape2D.shape.radius
+	var x = Global.rng.randf_range(-size / 2, size / 2)
+	var y = Global.rng.randf_range(-size / 2, size / 2)
+	hit.global_position = global_position + Vector2(x, y)
 	Global.add_node_to_level.emit(hit)
 
 
