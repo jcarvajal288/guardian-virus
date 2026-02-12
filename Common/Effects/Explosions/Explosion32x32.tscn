@@ -39,9 +39,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0bi05")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": false,
 "name": &"default",
@@ -51,5 +48,5 @@ animations = [{
 [node name="Explosion32x32" type="AnimatedSprite2D" unique_id=247827079]
 sprite_frames = SubResource("SpriteFrames_veqqr")
 autoplay = "default"
-frame = 5
+frame = 4
 frame_progress = 1.0

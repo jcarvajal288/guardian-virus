@@ -3,11 +3,18 @@ extends Enemy
 
 func _ready() -> void:
 	super()
+	$Hurtbox.on_hit.connect(_on_hit)
 	$Health.set_health(GameStats.BIG_SPIDER_HEALTH)
 	$Health.on_death.connect(_on_death)
 	$ShotTimer.timeout.connect(fire)
 	$ShotTimer.start(3.0)
 	$AnimatedSprite2D.animation_finished.connect(_on_animation_finished)
+
+
+func _on_hit(_dmg: float) -> void:
+	var hit = Effects.EXPLOSION_8x8_2.instantiate()
+	hit.global_position = global_position
+	Global.add_node_to_level.emit(hit)
 
 
 func _on_death() -> void:
