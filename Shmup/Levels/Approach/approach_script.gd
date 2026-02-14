@@ -31,7 +31,7 @@ func _ready() -> void:
 	# $BossTimer.wait_time = 60.0
 	# $BossTimer.timeout.connect(spawn_boss)
 	# build_level()
-	spawn_big_spider(SPAWN_LEFT_TOP, Vector2(20, 20), Vector2(140, 20))
+	spawn_boss()
 
 
 func spawn_missile() -> void:

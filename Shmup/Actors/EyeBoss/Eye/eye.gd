@@ -71,6 +71,13 @@ func _on_hit(_damage: float) -> void:
 	damage_flash()
 	Sounds.play_sound.emit(Sounds.SoundEffect.BOSS_HIT, global_position)
 
+	var hit = Effects.EXPLOSION_8x8_2.instantiate()
+	var size = $EyeSprite.get_rect().size
+	var x = Global.rng.randf_range(-size.x / 2, size.x / 2)
+	var y = Global.rng.randf_range(-size.y / 2, size.y / 2)
+	hit.global_position = global_position + Vector2(x, y)
+	Global.add_node_to_level.emit(hit)
+
 
 func damage_flash() -> void:
 	is_damage_flashing = true
