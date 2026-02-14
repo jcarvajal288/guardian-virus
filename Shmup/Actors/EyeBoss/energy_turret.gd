@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	$Hurtbox.on_hit.connect($Health.take_damage)
+	$Hurtbox.on_hit.connect(_on_hit)
 	$ShotTimer.timeout.connect(open_turret)
 	$AnimationPlayer.animation_finished.connect(_on_animation_finished)
 	$Health.on_death.connect(_on_death)
@@ -33,6 +33,16 @@ func fire() -> void:
 	bullet.global_position = global_position
 	bullet.damage = GameStats.ENERGY_TURRET_DAMAGE
 	Global.add_node_to_level.emit(bullet)
+
+
+func _on_hit(dmg: float) -> void:
+	$Health.take_damage(dmg)
+	var hit = Effects.EXPLOSION_8x8_2.instantiate()
+	var size = $Sprite2D.get_rect().size
+	var x = Global.rng.randf_range(-size.x / 2, size.x / 2)
+	var y = Global.rng.randf_range(-size.y / 2, size.y / 2)
+	hit.global_position = global_position + Vector2(x, y)
+	Global.add_node_to_level.emit(hit)
 
 
 func _on_death() -> void:
